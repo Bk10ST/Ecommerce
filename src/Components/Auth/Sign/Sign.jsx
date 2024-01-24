@@ -1,8 +1,8 @@
+import * as Yup from 'yup';
 import React from 'react';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+
 import '../Index.css'
 
 const SignUp = () => {
