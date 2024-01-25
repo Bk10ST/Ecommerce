@@ -2,10 +2,18 @@ import React from "react";
 import "./css/main.css";
 import { motion, spring } from "framer-motion";
 import { Link } from "react-router-dom";
-import useHome from "./HomeHook.jsx";
+import { useHome } from "./HomeHook.jsx";
 
 const HomePage = () => {
-  const { handleChange, filterdata, styleChanged, searchTerm, setSearchTerm } = useHome();
+  const {
+    handleChange,
+    filterdata,
+    styleChanged,
+    searchTerm,
+    setSearchTerm,
+    data,
+      
+  } = useHome();
   return (
     <div className="maindiv">
       <div className="main">
@@ -13,13 +21,7 @@ const HomePage = () => {
           <i
             className="fa-solid fa-bars fa-2xl"
             onClick={handleChange}
-            style={{
-              width: "200%",
-              position: "fixed",
-              zIndex: 2,
-              marginLeft: "80px",
-              marginTop: "49px",
-            }}
+            id="menu-bar"
           ></i>
         </div>
         <motion.div className="navbar">
@@ -47,18 +49,25 @@ const HomePage = () => {
           >
             Deal
           </motion.span>
-          <span className="tech">Tech Shop</span>
+          <span className="tech">Tech Store</span>
           <div className="navbar-heading">
             <div
               id="mySidenav"
               className={styleChanged ? "sidenav1" : "sidenav"}
             >
-              <h1 style={{
-                color: "white"
-              }}>Tech Shop</h1>
-              <a href="#">Home</a>
-              <Link to="/signup">Signup</Link>
-              <Link to="/login">Login</Link>
+              <h1 className="secondaryHeading">Tech Shop</h1>
+              <a href="#">
+                <i class="fa-solid fa-house"></i>{" "}
+                <span className="mx-1">Home</span>
+              </a>
+              <Link to="/signup">
+                <i class="fa-solid fa-user-plus"></i>{" "}
+                <span className="mx-1">Signup</span>
+              </Link>
+              <Link to="/login">
+                <i class="fa-regular fa-user"></i>{" "}
+                <span className="mx-2">Login</span>
+              </Link>
             </div>
           </div>
           <motion.div className="iphonegroup"></motion.div>
@@ -72,7 +81,12 @@ const HomePage = () => {
             }}
             className="applelogo"
           ></motion.div>
-          <div className="profile"></div>
+          <div className="profile">
+            <i
+              class="fa-solid fa-cart-shopping fa-2xl"
+              style={{ color: "#000000" }}
+            ></i>
+          </div>
           <div className="searchInput">
             <input
               value={searchTerm}
@@ -80,6 +94,7 @@ const HomePage = () => {
               type="text"
               placeholder="  search..."
             />
+        
           </div>
           <div className="search"></div>
         </motion.div>
@@ -94,14 +109,34 @@ const HomePage = () => {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="card"
-                style={{ width: "18rem" }}
+                style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
                 key={items.id}
               >
+                <img
+                  src={items.images[0]}
+                  alt=""
+                  className="api-image"
+          
+                />
                 <div className="card-body">
-                  <h5 className="card-title">{items.productCategory}</h5>
-                  
+                  <h5
+                    className="card-title"
+                    id="title-card"
+                    
+                  >
+                    {items.title}
+                  </h5>
+                  <br />
+                  <p
+                    className="card-text"
+                    id="text-card"
+                   
+                  >
+                    {items.description}
+                  </p>
+                  <p className="card-text">$ {items.price}</p>
                   <a href="#" className="btn btn-primary">
-                    add to cart
+                    Add to cart
                   </a>
                 </div>
               </motion.div>
@@ -109,6 +144,23 @@ const HomePage = () => {
           );
         })}
       </motion.div>
+
+      {/* footer */}
+
+      <div className="home-footer">
+        <ul className="footer-heading">
+          <li className="list-text">
+            <i class="fa-solid fa-house"></i> Home
+          </li>
+          <li className="list-text">
+            <i class="fa-solid fa-user-plus"></i> Login
+          </li>
+          <li className="list-text">
+            <i class="fa-regular fa-user"></i> SignUp
+          </li>
+        </ul>
+        <div className="line"></div>
+      </div>
     </div>
   );
 };

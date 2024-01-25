@@ -18,6 +18,7 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    cursor: pointer;
   }
   
   .sidenav1{
@@ -31,13 +32,14 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    /* cursor: pointer; */
   }
   
   
   .sidenav1 a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -56,6 +58,7 @@
     font-size: 36px;
     margin-left: 50px;
   }
+
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -64,12 +67,16 @@
   
   
   
-  
+  .sidenav h1{
+    color: white;
+    font-size: 23px;
+    margin-left: 20px;
+  }
   
   .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 15px;
     color: #818181;
     display: block;
     transition: 0.3s;
@@ -77,6 +84,7 @@
     z-index: 2;
   }
   
+
   .sidenav a:hover {
     color: #f1f1f1;
   }
@@ -133,7 +141,7 @@
     color: rgba(0,0,0,1);
     position: absolute;
     top: 241px;
-    left: 930px;
+    left: 920px;
     font-family: Inria Serif;
     font-weight: Light;
     font-size: 200px;
@@ -145,7 +153,7 @@
     color: rgba(0,0,0,1);
     position: absolute;
     top: 29px;
-    left: 593px;
+    left: 580px;
     font-family: Inria Serif;
     font-weight: Bold;
     font-size: 35px;
@@ -167,6 +175,11 @@
     display: block;
   }
   
+  .secondaryHeading{
+    color: white;
+    font-size: 23px;
+    margin-left: 20px;
+  }
   
   .home {
     width: 42px;
@@ -239,7 +252,7 @@
     opacity: 1;
     position: absolute;
     top: 103px;
-    left: 347px;
+    left: 340px;
     overflow: hidden;
   }
   .applelogo {
@@ -252,19 +265,19 @@
     opacity: 1;
     position: absolute;
     top: -295px;
-    left: 589px;
+    left: 579px;
     overflow: hidden;
   }
   .profile {
-    width: 22px;
-    height: 19px;
-    background: url("../Images/profile.png");
+    width: 30px;
+    height: 32px;
+    /* background: url("../Images/applelogo.png"); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 39px;
+    top: 40px;
     left: 1263px;
     overflow: hidden;
     cursor: pointer;
@@ -299,7 +312,7 @@
     z-index: 2;
   }
   .searchInput > input {
-    border: 1px solid;
+    border: none;
     border-radius: 50px;
     padding: 5px;
     z-index: 2;
@@ -315,6 +328,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    font-family: "Lato", sans-serif
   
   }
   
@@ -332,4 +346,73 @@
     z-index: 1;
   }
   
+  
+  .home-footer{
+    background-color: rgba(231,229,229,1);
+    width: 100%;
+    height: 250px;
+    position: relative;
+    z-index: 2;
+    /* margin-top: 400%; */
+    display: flex;
+    flex-direction: column;
+    margin-top: 670vh;
+  }
+
+  .home-footer > ul{
+    display: flex;
+    margin-top: 50px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Lato", sans-serif
+  }
+
+  .home-footer > ul > li{
+      margin-left: 70px;
+      list-style-type: none;
+  }
+
+  #menu-bar{
+    width: 200%;
+    position: fixed;
+    z-index: 2;
+    margin-left: 80px;
+    margin-top: 49px;
+    cursor: pointer
+  }
+
+  .api-image{
+    width: 100%;
+    height: 150px; 
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+
+  #title-card{
+    font-family: "Lato ", sans-serif;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 13ch;
+  }
+
+  #text-card{
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 15ch;
+    font-family: "Lato" , sans-serif;
+  }
+
+  .line{
+    width: 90%;
+    height: 1px;
+    background-color: #1e1e1e;
+    margin-left: 90px;
+    margin-top: 10px;
+  }
+
   
