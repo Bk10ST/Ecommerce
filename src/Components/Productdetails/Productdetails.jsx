@@ -7,6 +7,7 @@ const Productdetails = () => {
     <div>
         <StoreNav/>
         <Store/>
+        push
     </div>
   )
 }
