@@ -1,11 +1,19 @@
 import React from "react";
-import "./css/main.css";
+import './css/main.css'
 import { motion, spring } from "framer-motion";
 import { Link } from "react-router-dom";
-import useHome from "./HomeHook.jsx";
+import { useProducts } from "./useProduct.jsx";
 
 const HomePage = () => {
-  const { handleChange, filterdata, styleChanged, searchTerm, setSearchTerm } = useHome();
+  const {
+    handleChange,
+    filterdata, 
+    styleChanged,
+    searchTerm,
+    setSearchTerm,
+    data,
+  } = useProducts();
+  
   return (
     <div className="maindiv">
       <div className="main">
@@ -13,13 +21,7 @@ const HomePage = () => {
           <i
             className="fa-solid fa-bars fa-2xl"
             onClick={handleChange}
-            style={{
-              width: "200%",
-              position: "fixed",
-              zIndex: 2,
-              marginLeft: "80px",
-              marginTop: "49px",
-            }}
+            id="menu-bar"
           ></i>
         </div>
         <motion.div className="navbar">
@@ -47,18 +49,26 @@ const HomePage = () => {
           >
             Deal
           </motion.span>
-          <span className="tech">Tech Shop</span>
+          <span className="tech">Tech Store</span>
           <div className="navbar-heading">
             <div
               id="mySidenav"
               className={styleChanged ? "sidenav1" : "sidenav"}
             >
-              <h1 style={{
-                color: "white"
-              }}>Tech Shop</h1>
-              <a href="#">Home</a>
-              <Link to="/signup">Signup</Link>
-              <Link to="/login">Login</Link>
+              <h1 className="secondaryHeading">Tech Store</h1>
+              <a href="#">
+                <i className="fa-solid fa-house"></i>{" "}
+                <span className="mx-1">Home</span>
+              </a>
+              <Link to="/signup">
+                <i className="fa-solid fa-user-plus"></i>{" "}
+                <span className="mx-1">Signup</span>
+              </Link>
+              <Link to="/login">
+                <i className="fa-regular fa-user"></i>{" "}
+                <span className="mx-2">Login</span>
+              </Link>
+              
             </div>
           </div>
           <motion.div className="iphonegroup"></motion.div>
@@ -72,7 +82,12 @@ const HomePage = () => {
             }}
             className="applelogo"
           ></motion.div>
-          <div className="profile"></div>
+          <div className="profile">
+            <i
+              className="fa-solid fa-cart-shopping fa-2xl"
+              style={{ color: "#000000" }}
+            ></i>
+          </div>
           <div className="searchInput">
             <input
               value={searchTerm}
@@ -80,7 +95,24 @@ const HomePage = () => {
               type="text"
               placeholder="  search..."
             />
+        
           </div>
+          {/* suggestion div */}
+        
+      {searchTerm && (
+        <div className="listsuggest" >
+          {filterdata.length > 0 ? (
+            filterdata.map((suggest, index) => (
+              <ul key={index} className="suggestion-box">
+                <li style={{ color: "black" }}>- {suggest.productName}</li>
+              </ul>
+            ))
+          ) : (
+            <p className="non-found">No results found</p>
+          )}
+        </div>
+      )}
+
           <div className="search"></div>
         </motion.div>
       </div>
@@ -88,27 +120,101 @@ const HomePage = () => {
 
       <h1 className="productheading">Product's</h1>
       <motion.div className="product-section">
-        {filterdata.map((items, index) => {
+        {data.map((items, index) => {
           return (
-            <div key={index} className="productlist">
+            <motion.div key={index} 
+            whileHover={{ scale: 1.1 }}
+            className="productlist">
               <motion.div
-                whileHover={{ scale: 1.1 }}
+
                 className="card"
-                style={{ width: "18rem" }}
+                style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
                 key={items.id}
               >
-                <div className="card-body">
-                  <h5 className="card-title">{items.productCategory}</h5>
+                <img
+                  src={`https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/${items.productImages[0].imageUrl}` 
+                }
+                  alt=""
+                  className="api-image" 
                   
-                  <a href="#" className="btn btn-primary">
-                    add to cart
-                  </a>
+          
+                />
+                <div className="card-body">
+                  <h5
+                    className="card-title"
+                    id="title-card"
+                    
+                  >
+                    {items.productName}
+                  </h5>
+                  <br />
+                  <p
+                    className="card-title"
+                    id="title-card"
+                    
+                  >
+                    {items.productCategory}
+                  </p>
+                  <br />
+                  <p
+                    className="card-text"
+                    id="text-card"
+                   
+                  >
+                    {items.description}
+                  </p>
+                  <p className="card-text">$ {items.amount}</p>
+                  
+                  <Link to='/addtocart' href="#"  className="btn btn-primary">
+                    Add to cart
+                  </Link>
+                  
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           );
         })}
       </motion.div>
+
+      
+
+      {/* footer */}
+
+      <div className="home-footer">
+        <ul className="footer-heading">
+          <li className="list-text">
+            <i className="fa-solid fa-house"></i> Home
+          </li>
+          <li className="list-text">
+            <i className="fa-solid fa-user-plus"></i> Login
+          </li>
+          <li className="list-text">
+            <i className="fa-regular fa-user"></i> SignUp
+          </li>
+        </ul>
+<div className="mobileicon">
+  <ul>
+    <li className="mobile-icon"><i class="fa-brands fa-android fa-2xl"></i></li>
+    <li className="mobile-icon"><i class="fa-brands fa-apple fa-2xl"></i></li>
+  </ul>
+</div>
+
+        <div className="line"></div>
+
+      <div className="socialmedia">
+      <ul>
+      <li className="list-icon">
+        <i class="fa-brands fa-facebook"></i>
+          </li>
+          <li className="list-icon">
+          <i class="fa-brands fa-twitter"></i>
+          </li>
+          <li className="list-icon">
+          <i class="fa-brands fa-instagram"></i>
+          </li>
+      </ul>
+      </div>
+      </div>
     </div>
   );
 };

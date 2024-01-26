@@ -8,6 +8,10 @@ import Home from './Components/Homepage/Home'
 import Login from './Components/Auth/Login/Login'
 import SignUp from './Components/Auth/Sign/Sign'
 import Productdetails from './Components/Productdetails/Productdetails'
+import { Dashboard } from './Components/Dashboard/Dashboard'
+import AddToCart from './Components/Homepage/AddToCart'
+
+
 
 
 const App = () => {
@@ -18,7 +22,8 @@ const App = () => {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<SignUp />} />
-          <Route exact path='/dashboard' element={<Productdetails />} />
+          <Route exact path='/dashboard' element={<Dashboard />} />
+          <Route exact path='/addtocart' element={<AddToCart />} />
 
         </Routes>
       </Router>

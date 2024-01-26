@@ -304,7 +304,7 @@ body {
 .iphonegroup {
   width: 659px;
   height: 628px;
-  background: url("./Images/iphonegroup.png");
+  background: url("../src/Components/Homepage/Images/iphonegroup.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -318,7 +318,7 @@ body {
 .applelogo {
   width: 164px;
   height: 202px;
-  background: url("./Images/applelogo.png");
+  background: url("../src/Components/Homepage/Images/applelogo.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -332,7 +332,7 @@ body {
 .profile {
   width: 22px;
   height: 19px;
-  background: url("./Images/profile.png");
+  background: url("../src/Components/Homepage/Images/profile.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -347,7 +347,7 @@ body {
 .search {
   width: 25px;
   height: 25px;
-  background: url("./Images/search.png");
+  background: url("..src/Components/Homepage/Images/search.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
