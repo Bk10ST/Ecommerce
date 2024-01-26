@@ -17,7 +17,7 @@ const Login = () => {
     }),
     onSubmit: (values) => {
       console.log('Form submitted with values:', values);
-      navigate('/');
+      navigate('/dashboard');
     },
   });
 

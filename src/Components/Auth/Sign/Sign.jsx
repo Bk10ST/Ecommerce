@@ -24,7 +24,7 @@ const SignUp = () => {
         }),
         onSubmit: (values) => {
             console.log('Form submitted with values:', values);
-            navigate('/')
+            navigate('/dashboard')
         },
     });
 

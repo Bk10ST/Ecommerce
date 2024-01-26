@@ -7,7 +7,7 @@ import { useHome } from "./HomeHook.jsx";
 const HomePage = () => {
   const {
     handleChange,
-    filterdata,
+    filterdata, 
     styleChanged,
     searchTerm,
     setSearchTerm,
@@ -55,19 +55,20 @@ const HomePage = () => {
               id="mySidenav"
               className={styleChanged ? "sidenav1" : "sidenav"}
             >
-              <h1 className="secondaryHeading">Tech Shop</h1>
+              <h1 className="secondaryHeading">Tech Store</h1>
               <a href="#">
-                <i class="fa-solid fa-house"></i>{" "}
+                <i className="fa-solid fa-house"></i>{" "}
                 <span className="mx-1">Home</span>
               </a>
               <Link to="/signup">
-                <i class="fa-solid fa-user-plus"></i>{" "}
+                <i className="fa-solid fa-user-plus"></i>{" "}
                 <span className="mx-1">Signup</span>
               </Link>
               <Link to="/login">
-                <i class="fa-regular fa-user"></i>{" "}
+                <i className="fa-regular fa-user"></i>{" "}
                 <span className="mx-2">Login</span>
               </Link>
+              
             </div>
           </div>
           <motion.div className="iphonegroup"></motion.div>
@@ -83,7 +84,7 @@ const HomePage = () => {
           ></motion.div>
           <div className="profile">
             <i
-              class="fa-solid fa-cart-shopping fa-2xl"
+              className="fa-solid fa-cart-shopping fa-2xl"
               style={{ color: "#000000" }}
             ></i>
           </div>
@@ -96,6 +97,22 @@ const HomePage = () => {
             />
         
           </div>
+          {/* suggestion div */}
+        
+      {searchTerm && (
+        <div className="listsuggest" >
+          {filterdata.length > 0 ? (
+            filterdata.map((suggest, index) => (
+              <ul key={index} className="suggestion-box">
+                <li style={{ color: "black" }}>- {suggest.title}</li>
+              </ul>
+            ))
+          ) : (
+            <p className="non-found">No results found</p>
+          )}
+        </div>
+      )}
+
           <div className="search"></div>
         </motion.div>
       </div>
@@ -103,11 +120,13 @@ const HomePage = () => {
 
       <h1 className="productheading">Product's</h1>
       <motion.div className="product-section">
-        {filterdata.map((items, index) => {
+        {data.map((items, index) => {
           return (
-            <div key={index} className="productlist">
+            <motion.div key={index} 
+            whileHover={{ scale: 1.1 }}
+            className="productlist">
               <motion.div
-                whileHover={{ scale: 1.1 }}
+
                 className="card"
                 style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
                 key={items.id}
@@ -140,23 +159,25 @@ const HomePage = () => {
                   </a>
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           );
         })}
       </motion.div>
+
+      
 
       {/* footer */}
 
       <div className="home-footer">
         <ul className="footer-heading">
           <li className="list-text">
-            <i class="fa-solid fa-house"></i> Home
+            <i className="fa-solid fa-house"></i> Home
           </li>
           <li className="list-text">
-            <i class="fa-solid fa-user-plus"></i> Login
+            <i className="fa-solid fa-user-plus"></i> Login
           </li>
           <li className="list-text">
-            <i class="fa-regular fa-user"></i> SignUp
+            <i className="fa-regular fa-user"></i> SignUp
           </li>
         </ul>
         <div className="line"></div>
