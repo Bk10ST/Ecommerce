@@ -2,7 +2,7 @@ import React from "react";
 import "./css/main.css";
 import { motion, spring } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useHome } from "./HomeHook.jsx";
+import { useProducts } from "./useProduct.js";
 
 const HomePage = () => {
   const {
@@ -12,8 +12,8 @@ const HomePage = () => {
     searchTerm,
     setSearchTerm,
     data,
-      
-  } = useHome();
+  } = useProducts();
+  
   return (
     <div className="maindiv">
       <div className="main">
@@ -104,7 +104,7 @@ const HomePage = () => {
           {filterdata.length > 0 ? (
             filterdata.map((suggest, index) => (
               <ul key={index} className="suggestion-box">
-                <li style={{ color: "black" }}>- {suggest.title}</li>
+                <li style={{ color: "black" }}>- {suggest.productName}</li>
               </ul>
             ))
           ) : (
@@ -132,7 +132,7 @@ const HomePage = () => {
                 key={items.id}
               >
                 <img
-                  src={items.images[0]}
+                  src={`https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/${items.productImages[0].imageUrl}`}
                   alt=""
                   className="api-image"
           
@@ -143,8 +143,16 @@ const HomePage = () => {
                     id="title-card"
                     
                   >
-                    {items.title}
+                    {items.productName}
                   </h5>
+                  <br />
+                  <p
+                    className="card-title"
+                    id="title-card"
+                    
+                  >
+                    {items.productCategory}
+                  </p>
                   <br />
                   <p
                     className="card-text"
@@ -153,7 +161,7 @@ const HomePage = () => {
                   >
                     {items.description}
                   </p>
-                  <p className="card-text">$ {items.price}</p>
+                  <p className="card-text">$ {items.amount}</p>
                   <a href="#" className="btn btn-primary">
                     Add to cart
                   </a>
@@ -180,7 +188,28 @@ const HomePage = () => {
             <i className="fa-regular fa-user"></i> SignUp
           </li>
         </ul>
+<div className="mobileicon">
+  <ul>
+    <li className="mobile-icon"><i class="fa-brands fa-android fa-2xl"></i></li>
+    <li className="mobile-icon"><i class="fa-brands fa-apple fa-2xl"></i></li>
+  </ul>
+</div>
+
         <div className="line"></div>
+
+      <div className="socialmedia">
+      <ul>
+      <li className="list-icon">
+        <i class="fa-brands fa-facebook"></i>
+          </li>
+          <li className="list-icon">
+          <i class="fa-brands fa-twitter"></i>
+          </li>
+          <li className="list-icon">
+          <i class="fa-brands fa-instagram"></i>
+          </li>
+      </ul>
+      </div>
       </div>
     </div>
   );

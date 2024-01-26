@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-export const useHome = () => {
+export const useProducts = () => {
     const [data, setData] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [styleChanged, setStyleChanged] = useState(false)
@@ -8,8 +8,14 @@ export const useHome = () => {
     useEffect(() => {
         const fetchData = async (imageArray) => {
             try {
-                const apiItems = await axios.get("https://dummyjson.com/products");
-                const response= await apiItems.data.products || [];
+                const apiItems = await axios.get("https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/products" , {
+                    headers :{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+                });
+                const response= await apiItems.data || [];
                 setData(response)
             } catch (error) {
                 console.log("error occurred", error);
@@ -19,17 +25,12 @@ export const useHome = () => {
     }, []);
     
     const filterdata = data.filter((items) =>
-        items.title.toLowerCase().includes(searchTerm.toString().toLowerCase())
+        items?.productName?.toLowerCase().includes(searchTerm.toString().toLowerCase())
     );
     
-
     const handleChange = () => {
         setStyleChanged(!styleChanged)
     }
-
-
-    
-   
 
     return { handleChange, styleChanged, searchTerm, setSearchTerm , data  , filterdata}
 }

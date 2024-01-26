@@ -391,7 +391,7 @@
   .api-image{
     width: 100%;
     height: 150px; 
-    object-fit: cover;
+    object-fit: scale-down;
     overflow: hidden;
   }
 
@@ -442,4 +442,47 @@
 
 .non-found{
   text-align: center;
+}
+
+
+.home-footer{
+  background-color: rgba(231,229,229,1);
+  width: 100%;
+  height: 250px;
+  position: relative;
+  z-index: 2;
+  /* margin-top: 400%; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 710vh;
+}
+
+.socialmedia{
+  margin-left: 1020px;
+}
+
+.socialmedia > ul {
+  display: flex;
+  margin-top: 30px;
+
+}
+
+.socialmedia > ul> li{
+    margin-left: 70px;
+    list-style-type: none;
+}
+
+
+
+.mobileicon{
+  margin-left: 1090px;
+}
+
+.mobileicon > ul {
+  display: flex;
+}
+
+.mobileicon > ul> li{
+    margin-left: 50px;
+    list-style-type: none;
 }
