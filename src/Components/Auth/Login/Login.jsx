@@ -1,8 +1,8 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
-import '../Index.css'
 
+import '../Index.css'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const Login = () => {
     }),
     onSubmit: (values) => {
       console.log('Form submitted with values:', values);
-      navigate('/');
+      navigate('/dashboard');
     },
   });
 

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,6 +7,8 @@ import Home from './Components/Homepage/Home'
 import Login from './Components/Auth/Login/Login'
 import SignUp from './Components/Auth/Sign/Sign'
 import Productdetails from './Components/Productdetails/Productdetails'
+import { AddItems } from './Components/Productdetails/AddItems'
+import { AdminDashboard } from './AdminDashboard/Admin'
 
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/signup' element={<SignUp />} />
           <Route exact path='/dashboard' element={<Productdetails />} />
+          <Route exact path='/add' element={<AddItems />} />
+          <Route exact path='/admin/dashboard' element={<AdminDashboard />} />
+          
 
         </Routes>
       </Router>

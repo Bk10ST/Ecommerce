@@ -24,7 +24,7 @@ const SignUp = () => {
         }),
         onSubmit: (values) => {
             console.log('Form submitted with values:', values);
-            navigate('/')
+            navigate('/dashboard')
         },
     });
 
@@ -44,7 +44,6 @@ const SignUp = () => {
                 {formik.touched.firstName && formik.errors.firstName ? (
                     <div className="text-danger text-center pb-1">{formik.errors.firstName}</div>
                 ) : null}
-                {/* Repeat similar structure for other input fields */}
                 <div className={`mb-3 d-flex align-items-center ${formik.touched.lastName && formik.errors.lastName ? 'input-error' : ''}`}>
                     <div className="circle"></div>
                     <input
@@ -57,7 +56,6 @@ const SignUp = () => {
                 {formik.touched.lastName && formik.errors.lastName ? (
                     <div className="text-danger text-center pb-1">{formik.errors.lastName}</div>
                 ) : null}
-                {/* Repeat similar structure for other input fields */}
                 <div className={`mb-3 d-flex align-items-center ${formik.touched.firstName && formik.errors.firstName ? 'input-error' : ''}`}>
                     <div className="circle"></div>
                     <input
@@ -70,7 +68,6 @@ const SignUp = () => {
                 {formik.touched.lastName && formik.errors.lastName ? (
                     <div className="text-danger text-center pb-1">{formik.errors.lastName}</div>
                 ) : null}
-                {/* Repeat similar structure for other input fields */}
                 <div className={`mb-3 d-flex align-items-center ${formik.touched.firstName && formik.errors.firstName ? 'input-error' : ''}`}>
                     <div className="circle"></div>
                     <input
@@ -83,7 +80,6 @@ const SignUp = () => {
                 {formik.touched.email && formik.errors.email ? (
                     <div className="text-danger text-center pb-1">{formik.errors.lastName}</div>
                 ) : null}
-                {/* Repeat similar structure for other input fields */}
                 <div className={`mb-3 d-flex align-items-center ${formik.touched.password && formik.errors.password ? 'input-error' : ''}`}>
                     <div className="circle"></div>
                     <input

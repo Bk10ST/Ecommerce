@@ -1,5 +1,12 @@
+import { useNavigate } from 'react-router-dom';
+
 import './store.css'
+
 export const Store = () => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/add')
+    }
     return (
         <div className="container">
             <div className="row">
@@ -26,9 +33,78 @@ export const Store = () => {
                                     </div>
 
                                 </div>
-                               
-                                
-                               
+
+
+
+                            </div>
+                            <div className="products">
+                                <div className="product-1 d-flex mx-3">
+                                    <div className="img">
+                                        <img src="https://en-ae.dropkicks.com/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw45ff3343/dk/DK2/N/K/5/5/3/DK2_NK553558_154_196969278243_1.jpg?sw=750&sh=750&sm=fit&q=80" alt="shoes-img" />
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <div className="products-subtitles">
+                                            <ul>
+                                                <b>Jordan</b>
+                                                <li>20% OFF</li>
+                                                <li>Availabe : 3 </li>
+                                            </ul>
+                                        </div>
+                                        <div className="floater">
+                                            <p>Rs 10000 </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <div className="products">
+                                <div className="product-1 d-flex mx-3">
+                                    <div className="img">
+                                        <img src="https://en-ae.dropkicks.com/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw45ff3343/dk/DK2/N/K/5/5/3/DK2_NK553558_154_196969278243_1.jpg?sw=750&sh=750&sm=fit&q=80" alt="shoes-img" />
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <div className="products-subtitles">
+                                            <ul>
+                                                <b>Jordan</b>
+                                                <li>20% OFF</li>
+                                                <li>Availabe : 3 </li>
+                                            </ul>
+                                        </div>
+                                        <div className="floater">
+                                            <p>Rs 10000 </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                            <div className="products">
+                                <div className="product-1 d-flex mx-3">
+                                    <div className="img">
+                                        <img src="https://en-ae.dropkicks.com/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw45ff3343/dk/DK2/N/K/5/5/3/DK2_NK553558_154_196969278243_1.jpg?sw=750&sh=750&sm=fit&q=80" alt="shoes-img" />
+                                    </div>
+                                    <div className="d-flex justify-content-between">
+                                        <div className="products-subtitles">
+                                            <ul>
+                                                <b>Jordan</b>
+                                                <li>20% OFF</li>
+                                                <li>Availabe : 3 </li>
+                                            </ul>
+                                        </div>
+                                        <div className="floater">
+                                            <p>Rs 10000 </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -64,7 +140,7 @@ export const Store = () => {
                         </div>
                     </div>
                     <div className="btn-summary">
-                        <button className="btn btn-primary btn-logined">Add to Cart</button>
+                        <button className="btn btn-primary btn-logined" onClick={handleClick}>Add to Cart</button>
                     </div>
                 </div>
             </div>

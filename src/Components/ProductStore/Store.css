@@ -1,21 +1,16 @@
 .header-dashboard {
-    background-color: #3ea0e9;
     color: white;
     height: 35vh;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .title-dashboard {
     font-size: 25px;
     font-weight: bolder;
     font-family: 'Courier New', Courier, monospace;
-}
-
-.box-dashboard {
-    height: 40%;
-    width: 100%;
-    background-color: grey;
-    font-family: 'Courier New', Courier, monospace;
-
 }
 
 .num-1 p {
@@ -43,7 +38,7 @@
 }
 
 .products-header {
-    color: #3ea0e9;
+    color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;
 }
@@ -66,18 +61,11 @@ li {
 
 .floater {
     margin-left: 290px;
-    color: #3ea0e9;
+    color: #000000;
     font-weight: bolder;
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;
 }
-
-ul b {
-    font-weight: 800;
-    color: #3ea0e9;
-    font-size: 22px;
-}
-
 ul li {
     padding-top: 10px;
     font-weight: 800;

@@ -1,8 +1,9 @@
 import React from "react";
-import "./css/main.css";
 import { motion, spring } from "framer-motion";
 import { Link } from "react-router-dom";
 import useHome from "./HomeHook.jsx";
+
+import "./css/main.css";
 
 const HomePage = () => {
   const { handleChange, filterdata, styleChanged, searchTerm, setSearchTerm } = useHome();
@@ -98,7 +99,7 @@ const HomePage = () => {
                 key={items.id}
               >
                 <div className="card-body">
-                  <h5 className="card-title">{items.productCategory}</h5>
+                  <h5 className="card-title">{items.productName}</h5>
                   
                   <a href="#" className="btn btn-primary">
                     add to cart

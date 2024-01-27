@@ -1,15 +1,15 @@
 import axios from 'axios'
 import { useEffect, useState } from "react";
 
-const useHome=()=>{
-    const [data, setData] = useState([]);
+const useHome = () => {
+  const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [styleChanged , setStyleChanged]= useState(false)
+  const [styleChanged, setStyleChanged] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiItems = await axios.get("https://c47c-2407-1400-aa1b-5f0-55b6-7bc5-88f6-4d34.ngrok-free.app/products");
+        const apiItems = await axios.get("https://ff9e-2407-1400-aa1e-da20-11ef-d1ae-37b9-ba6a.ngrok-free.app/products");
 
         const response = apiItems.data.products || [];
         console.log(response)
@@ -18,7 +18,7 @@ const useHome=()=>{
         console.log("error occurred", error);
       }
     };
-    fetchData(); 
+    fetchData();
   }, []);
 
 
@@ -27,11 +27,11 @@ const useHome=()=>{
     items.productCategory.toLowerCase().includes(searchTerm.toString().toLowerCase())
   );
 
-  const handleChange=()=>{
+  const handleChange = () => {
     setStyleChanged(!styleChanged)
   }
 
-   return {handleChange , filterdata , styleChanged ,searchTerm ,setSearchTerm}
+  return { handleChange, filterdata, styleChanged, searchTerm, setSearchTerm }
 }
 
 export default useHome

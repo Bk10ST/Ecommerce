@@ -1,5 +1,4 @@
 .header-dashboard {
-    background-color: #3ea0e9;
     color: white;
     height: 35vh;
 }
@@ -41,13 +40,6 @@
     bottom: 49px;
     box-shadow: 1px 1px 3px #000000;
 }
-
-.products-header {
-    color: #3ea0e9;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 800;
-}
-
 .img img {
     height: 150px;
     width: 150px;
@@ -64,17 +56,10 @@ li {
     list-style-type: none;
 }
 
-.floater {
-    margin-left: 290px;
-    color: #3ea0e9;
-    font-weight: bolder;
-    font-size: 22px;
-    font-family: 'Courier New', Courier, monospace;
-}
 
 ul b {
     font-weight: 800;
-    color: #3ea0e9;
+    color: black;
     font-size: 22px;
 }
 
