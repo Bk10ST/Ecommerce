@@ -8,14 +8,8 @@ export const useProducts = () => {
     useEffect(() => {
         const fetchData = async (imageArray) => {
             try {
-                const apiItems = await axios.get("https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/products" , {
-                    headers :{
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'ngrok-skip-browser-warning': 'true'
-                    }
-                });
-                const response= await apiItems.data || [];
+                const apiItems = await axios.get("https://dummyjson.com/products");
+                const response= await apiItems.data.products || [];
                 setData(response)
             } catch (error) {
                 console.log("error occurred", error);

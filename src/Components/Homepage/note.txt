@@ -1,4 +1,15 @@
-import React from "react";
+            try {
+                const apiItems = await axios.get("https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/products" , {
+                    headers :{
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true'
+                    }
+
+
+
+
+                    import React from "react";
 import "./css/main.css";
 import pic from "./Images/nav-circle.png";
 import pic1 from "./Images/applelogo.png";

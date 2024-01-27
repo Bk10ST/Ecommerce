@@ -1,13 +1,14 @@
 import * as Yup from 'yup';
 import React from 'react';
 import { useFormik } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
 
 import '../Index.css'
 import axios from 'axios';
 
-const SignUp = () => {
-    const navigate = useNavigate()
+const SignUp = ({onSign}) => {
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -17,23 +18,36 @@ const SignUp = () => {
             password: '',
         },
         validationSchema: Yup.object({
-            firstName: Yup.string().required('Required'),
-            lastName: Yup.string().required('Required'),
-            userName: Yup.string().required('Required'),
-            email: Yup.string().email('Invalid email address').required('Required'),
-            password: Yup.string().required('Required'),
+            firstName: Yup.string().required("Required"),
+            lastName: Yup.string().required("Required"),
+            email: Yup.string().required("Required"),
+            userName: Yup.string().required("Required"),
+            password: Yup.string().required("Required"),
+            
         }),
-        onSubmit: (values) => {
-            console.log('Form submitted with values:', values);
-            axios.post('https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/registration' , values , {
-                // axios.post('https://jsonplaceholder.typicode.com/posts', values, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'ngrok-skip-browser-warning': 'true'
-                }
-            })
-            // navigate('/')
+        onSubmit: async (values) => {
+            try {
+                // Make the registration request
+                const response = await axios.post('https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/registration', values, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'ngrok-skip-browser-warning': 'true',
+                    },
+                });
+
+                if (response.data) {
+                 
+                    onSign(firstName , lastName , userName , password , email)
+                    navigate('/dashboard');
+                    localStorage.setItem("session", JSON.stringify(response.data));
+
+                   
+                } 
+            } catch (error) {
+                
+                console.error('Error during registration:', error);
+            }
         },
     });
 
@@ -111,7 +125,7 @@ const SignUp = () => {
                             SignUp
                         </button>
                         <p className='text-center mt-3'>
-                            Already have an account? <a href="./login">Login Here!!</a>
+                            Already have an account? <Link to="/login">Login Here!!</Link>
                         </p>
                     </div>
                 </div>
