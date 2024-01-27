@@ -1,8 +1,8 @@
 import React from "react";
-import "./css/main.css";
+import './css/main.css'
 import { motion, spring } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useProducts } from "./useProduct.js";
+import { useProducts } from "./useProduct.jsx";
 
 const HomePage = () => {
   const {
@@ -132,9 +132,11 @@ const HomePage = () => {
                 key={items.id}
               >
                 <img
-                  src={`https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/${items.productImages[0].imageUrl}`}
+                  src={`https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/${items.productImages[0].imageUrl}` 
+                }
                   alt=""
-                  className="api-image"
+                  className="api-image" 
+                  
           
                 />
                 <div className="card-body">
@@ -162,9 +164,11 @@ const HomePage = () => {
                     {items.description}
                   </p>
                   <p className="card-text">$ {items.amount}</p>
-                  <a href="#" className="btn btn-primary">
+                  
+                  <Link to='/addtocart' href="#"  className="btn btn-primary">
                     Add to cart
-                  </a>
+                  </Link>
+                  
                 </div>
               </motion.div>
             </motion.div>

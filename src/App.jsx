@@ -1,27 +1,32 @@
 import React from 'react'
 import {
-  BrowserRouter as Router , 
-  Routes , 
+  BrowserRouter as Router,
+  Routes,
   Route
 } from 'react-router-dom'
 import Home from './Components/Homepage/Home'
 import Login from './Components/Auth/Login/Login'
 import SignUp from './Components/Auth/Sign/Sign'
+import Productdetails from './Components/Productdetails/Productdetails'
 import { Dashboard } from './Components/Dashboard/Dashboard'
+import AddToCart from './Components/Homepage/AddToCart'
+
+
 
 
 const App = () => {
   return (
     <div>
-     <Router>
-     <Routes>
-      <Route exact path='/' element={<Home/>} />
-      <Route exact path='/login' element={<Login/>} />
-      <Route exact path='/signup' element={<SignUp/>}  />
-      <Route exact path='/dashboard' element={<Dashboard/>} />
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+          <Route exact path='/login' element={<Login />} />
+          <Route exact path='/signup' element={<SignUp />} />
+          <Route exact path='/dashboard' element={<Dashboard />} />
+          <Route exact path='/addtocart' element={<AddToCart />} />
 
-     </Routes>
-     </Router>
+        </Routes>
+      </Router>
 
 
 

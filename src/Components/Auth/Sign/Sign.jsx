@@ -1,9 +1,10 @@
+import * as Yup from 'yup';
 import React from 'react';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom';
+
 import '../Index.css'
+import axios from 'axios';
 
 const SignUp = () => {
     const navigate = useNavigate()
@@ -24,7 +25,15 @@ const SignUp = () => {
         }),
         onSubmit: (values) => {
             console.log('Form submitted with values:', values);
-            navigate('/dashboard')
+            axios.post('https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/registration' , values , {
+                // axios.post('https://jsonplaceholder.typicode.com/posts', values, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true'
+                }
+            })
+            // navigate('/')
         },
     });
 

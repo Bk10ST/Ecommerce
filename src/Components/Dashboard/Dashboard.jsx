@@ -1,21 +1,9 @@
 import "./Dash.css";
-import { DashHook } from "./Dashhook";
+import { useCreateProduct } from "./useCreate";
+
 export const Dashboard = () => {
-  const {
-    data,
-    email,
-    setEmail,
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    isUpdate,
-    handleClear,
-    handleDelete,
-    handleEdit,
-    handleSave,
-    handleUpdate,
-  } = DashHook();
+  const { addProduct, handleProducts, formvalues, convertToBase64 } =
+    useCreateProduct();
 
   return (
     <>
@@ -45,43 +33,52 @@ export const Dashboard = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <form action="">
-                    <label>First Name :</label>
+                    <label>Product Name :</label>
                     <input
                       type="text"
                       placeholder="Enter Your First Name"
-                      onChange={(e) => setFirstName(e.target.value)}
-                      value={firstName}
+                      onChange={(e) => handleProducts(e)}
+                      value={formvalues.productName}
+                      name="productName"
                     />
                     <label>Last Name :</label>
                     <input
                       type="text"
-                      placeholder="Enter Your Last Name"
-                      onChange={(e) => setLastName(e.target.value)}
-                      value={lastName}
+                      placeholder="Enter Your product category"
+                      onChange={(e) => handleProducts(e)}
+                      value={formvalues.productCategory}
+                      name="productCategory"
                     />
                     <label>Email :</label>
                     <input
                       type="text"
-                      placeholder="Enter Your Last Name"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
+                      placeholder="Enter Your amount"
+                      onChange={(e) => handleProducts(e)}
+                      value={formvalues.amount}
+                      name="amount"
+                    />
+                    <input
+                      type="file"
+                      onChange={convertToBase64}
+                      accept="image/*"
+                      name="image"
                     />
                     <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={addProduct}
+                    >
+                      Save
+                    </button>
+                    {/* <button
                       type="button"
                       className="btn btn-danger mx-2"
                       onClick={handleClear}
                     >
                       Clear
-                    </button>
-
+                    </button> */}
+                    {/* 
                     {!isUpdate ? (
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={(e) => handleSave(e)}
-                      >
-                        Save
-                      </button>
                     ) : (
                       <button
                         type="button"
@@ -90,7 +87,7 @@ export const Dashboard = () => {
                       >
                         Update
                       </button>
-                    )}
+                    )} */}
                     <button
                       type="button"
                       className="btn btn-secondary"
@@ -117,7 +114,7 @@ export const Dashboard = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {/* {data.map((item) => (
             <tr key={item.id}>
               <th scope="row">{item.id}</th>
               <td>{item.name}</td>
@@ -140,7 +137,7 @@ export const Dashboard = () => {
                 </button>
               </td>
             </tr>
-          ))}
+          ))} */}
           <tr></tr>
           <tr></tr>
         </tbody>
