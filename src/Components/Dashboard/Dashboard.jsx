@@ -1,8 +1,24 @@
 import React from 'react'
 import './Dash.css'
 import { Link } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import FetchData from "../ProductApi/IphoneApi";
 
 const Dashboard = () => {
+  const {data , isLoading, isError}= useQuery({
+    queryKey: ["products"] ,
+    queryFn: FetchData
+  })
+
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  
+  if (isError) {
+    return <p>Error fetching data</p>;
+  }
+  
 const style={
   textDecoration: "none", 
   color: "white"
@@ -20,6 +36,7 @@ const style={
           </ul>
         </div>
       </div>
+  
 
       <div className="info">
         <h1 className='header-dash'>DashBoard</h1>
@@ -34,12 +51,16 @@ const style={
             <th className='th-text'>Product Price</th>
           </thead>
 
-          <tbody className='td1'>
-            <td className='td-text'></td>
-            <td className='td-text'></td>
-            <td className='td-text'></td>
-            <td className='td-text'></td>
+        {
+          data.map(item=> {
+            return   <tbody className='td1'>
+            <td className='td-text'>{item.title}</td>
+            <td className='td-text'>{item.type}</td>
+            <td className='td-text'><img src={item.images} alt="" /></td>
+            <td className='td-text'>{item.amount}</td>
           </tbody>
+          })
+        }
           
         </table>
       </div>

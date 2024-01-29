@@ -1,0 +1,33 @@
+.input-field{
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.P-name{
+    font-size: 17px;
+}
+
+
+.form-control{
+    margin-left: 200px;
+}
+
+.col{
+    margin-top: 50px;
+}
+
+.form-group {
+    margin-top: 40px;
+}
+
+.number-field{
+    margin-top: 40px;
+}
+
+.form-control-file{
+    margin-left: 110px;
+}
