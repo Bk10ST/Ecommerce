@@ -25,7 +25,7 @@ const style={
 }
 
   return (
-    <div>
+    <div className='dash-main'>
       <div className="sidenav">
         <h1 className='nav-head'>TechStore</h1>
         <div className="nav-item">

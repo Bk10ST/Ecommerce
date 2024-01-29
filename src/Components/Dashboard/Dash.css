@@ -1,3 +1,4 @@
+
 .sidenav{
     background-color: rgba(255,171,93,1);
     height: 120vh;
@@ -8,6 +9,7 @@
   overflow-x: hidden;
   margin-top: -3%;
     position: fixed;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
 
 .nav-head{
@@ -45,22 +47,23 @@ cursor: pointer;
 }
 
 .tab1 {
-    width: 80%;
+    width: 70%;
     border-collapse: collapse;
     margin-bottom: 40px;
     margin-top: 40px;
-    margin-left: 273px;
+    margin-left: 350px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
   }
   
   .th-text, .td-text {
-    border: 2px solid black;
+    /* border: 3px solid black; */
     padding: 8px;
     text-align: left;
     background-color: rgba(255,171,93,1);
   }
   
   .th1 {
-    background-color: rgba(255,171,93,1);
+    background-color: #E6E7E9;
   }
   
   img {

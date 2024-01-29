@@ -25,4 +25,24 @@ export const ViewData = async (id) => {
 };
 
 
+export const createProduct = async (newPost) => {
+  try {
+    const productApi = await axios.post("http://localhost:3000/products/", newPost, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log(productApi.data, "API response");
+    const response = productApi.data || [];
+    console.log(response, "response");
+    return response;
+  } catch (error) {
+    console.error("Error occurred:", error);
+    throw error;
+  }
+};
+
+
+
 
