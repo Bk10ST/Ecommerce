@@ -1,150 +1,50 @@
-import "./Dash.css";
-import { DashHook } from "./Dashhook";
-export const Dashboard = () => {
-  const {
-    data,
-    email,
-    setEmail,
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    isUpdate,
-    handleClear,
-    handleDelete,
-    handleEdit,
-    handleSave,
-    handleUpdate,
-  } = DashHook();
+import React from 'react'
+import './Dash.css'
+import { Link } from 'react-router-dom'
+
+const Dashboard = () => {
+const style={
+  textDecoration: "none", 
+  color: "white"
+}
 
   return (
-    <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <h1 className="text-center">Products</h1>
-
-        <div className="form-field">
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop"
-          >
-            Add item +
-          </button>
-
-          <div
-            className="modal fade"
-            id="staticBackdrop"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            tabIndex={-1}
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <form action="">
-                    <label>First Name :</label>
-                    <input
-                      type="text"
-                      placeholder="Enter Your First Name"
-                      onChange={(e) => setFirstName(e.target.value)}
-                      value={firstName}
-                    />
-                    <label>Last Name :</label>
-                    <input
-                      type="text"
-                      placeholder="Enter Your Last Name"
-                      onChange={(e) => setLastName(e.target.value)}
-                      value={lastName}
-                    />
-                    <label>Email :</label>
-                    <input
-                      type="text"
-                      placeholder="Enter Your Last Name"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
-                    />
-                    <button
-                      type="button"
-                      className="btn btn-danger mx-2"
-                      onClick={handleClear}
-                    >
-                      Clear
-                    </button>
-
-                    {!isUpdate ? (
-                      <button
-                        type="button"
-                        className="btn btn-primary"
-                        onClick={(e) => handleSave(e)}
-                      >
-                        Save
-                      </button>
-                    ) : (
-                      <button
-                        type="button"
-                        className="btn btn-danger mx-2"
-                        onClick={handleUpdate}
-                      >
-                        Update
-                      </button>
-                    )}
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-bs-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div>
+      <div className="sidenav">
+        <h1 className='nav-head'>TechStore</h1>
+        <div className="nav-item">
+          <ul>
+            <li><Link to='/dashboard' style={style}><i className="fa-solid fa-bars"></i> &nbsp; Dashboard</Link></li>
+            <li><Link to='/addproduc' style={style}><i class="fa-solid fa-plus"></i> &nbsp;add-items</Link></li>
+            <li><Link to='/order' style={style}><i class="fa-solid fa-list"></i> &nbsp;Order's</Link></li>
+          </ul>
         </div>
-        <div></div>
       </div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">No</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name </th>
-            <th scope="col">Email</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <th scope="row">{item.id}</th>
-              <td>{item.name}</td>
-              <td>{item.caste}</td>
-              <td>{item.email}</td>
-              <td>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={() => handleEdit(item.id)}
-                >
-                  Edit
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger mx-2"
-                  onClick={() => handleDelete(item.id)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-          ))}
-          <tr></tr>
-          <tr></tr>
-        </tbody>
-      </table>
-    </>
-  );
-};
+
+      <div className="info">
+        <h1 className='header-dash'>DashBoard</h1>
+      </div>
+
+      <div className="table">
+        <table className='tab1'>
+          <thead className='th1'>
+            <th className='th-text'>Product Name</th>
+            <th className='th-text'>Product Type</th>
+            <th className='th-text'>Product Image</th>
+            <th className='th-text'>Product Price</th>
+          </thead>
+
+          <tbody className='td1'>
+            <td className='td-text'></td>
+            <td className='td-text'></td>
+            <td className='td-text'></td>
+            <td className='td-text'></td>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  )
+}
+
+export default Dashboard

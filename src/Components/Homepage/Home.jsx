@@ -3,13 +3,33 @@ import "./css/main.css";
 import pic from "./Images/nav-circle.png";
 import pic1 from "./Images/applelogo.png";
 import pic2 from "./Images/logo.png";
-import { useProducts } from "./useProduct";
 import { motion } from 'framer-motion';
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useQuery } from '@tanstack/react-query'
+import FetchData from "../ProductApi/IphoneApi";
+import Footer from './Footer/Footer'
 
 const Home = () => {
-  const { data } = useProducts();
+const navigate= useNavigate();
+  const {data , isLoading, isError}= useQuery({
+    queryKey: ["products"] ,
+    queryFn: FetchData
+  })
+
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+  
+  if (isError) {
+    return <p>Error fetching data</p>;
+  }
+  
+
+  console.log(data)
+
+
+
   const linkStyle = {
     textDecoration: 'none',
     color: 'black',
@@ -20,19 +40,16 @@ const Home = () => {
         <h1 className="nav-header">TechStore</h1>
         <nav className="nav-items">
           <ul>
-            <li>Home</li>
-            <li><Link style={linkStyle} to='/available'>Available</Link></li>
-            <li><Link style={linkStyle}  to='/blog'>Blog</Link></li>
-            <li><Link style={linkStyle} to='/contact'>Contact</Link></li>
+            <li><i class="fa-solid fa-house"></i>&nbsp; Home</li>
+            <li><Link style={linkStyle} to='/available'><i class="fa-solid fa-circle-check"></i>&nbsp; Available</Link></li>
+            {/* <li><Link style={linkStyle}  to='/blog'>Blog</Link></li> */}
+            {/* <li><Link style={linkStyle} to='/contact'>Contact</Link></li> */}
           </ul>
         </nav>
 
         <div className="nav-img">
-          <div className="cart">
-            <Link style={linkStyle} to='/cart'>Cart &nbsp; <i class="fa-solid fa-cart-shopping"></i></Link>
-          </div>
           <p className="dashboard">
-           <Link style={linkStyle} to='/login'> Dashboard &nbsp; <i class="fa-solid fa-bars"></i></Link>
+           <Link style={linkStyle} to='/dashboard'> Dashboard &nbsp; <i className="fa-solid fa-bars"></i></Link>
           </p>
           <img src={pic} alt="" />
         </div>
@@ -55,10 +72,8 @@ const Home = () => {
       <div className="item-collection">
         <h1>Collection</h1>
         <motion.div className="product-section">
-          {data.map((item, index) => {
-            return (
-              <div
-                key={index}
+          {data.map(item => {
+            return  <div
                 whileHover={{ scale: 1.1 }}
                 className="productlist"
               >
@@ -66,28 +81,32 @@ const Home = () => {
                   className="card"
                   style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
                   key={item.id}
-                  whileHover={{scale: 1.1 , boxShadow: " rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px"}}
+                  whileHover={{scale: 1.1 }}
                 >
-                  <img src={item.images[0]} alt="" className="api-image" />
+                  <img src={item.images} alt="" className="api-image" />
                   <div className="card-body">
                     <h5 className="card-title" id="title-card">
                       {item.title}
                     </h5>
                     <br />
                     <p className="card-text" id="text-card">
-                      {item.description}
+                      {item.type}
                     </p>
-                    <p className="card-text">$ {item.price}</p>
+                    <p className="card-text">{item.amount}</p>
 
-                    <a to="/addtocart" href="#" className="btn btn-primary">
-                      Add to cart
-                    </a>
+                    <button  className="btn btn-primary" onClick={()=> navigate(`/cart/${item.id}`)} >
+                      VIEW
+                    </button>
                   </div>
                 </motion.div>
               </div>
-            );
+            ;
           })}
         </motion.div>
+      </div>
+      
+      <div className="footer">
+      <Footer/>
       </div>
     </div>
   );

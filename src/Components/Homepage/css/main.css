@@ -1,7 +1,9 @@
+
 .main{
   width: 100%;
   height: 100%;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .nav-header{
@@ -27,7 +29,7 @@ font-size: 1vw;
 
 .nav-img > img{
 width: 100%;
-margin-top: -12%;
+margin-top: -14%;
 }
 
 .nav-img{
@@ -36,7 +38,7 @@ margin-top: -12%;
 
 .nav-img > p{
   margin-left: 550px;
-  margin-top: -20px;
+  margin-top: -30px;
   position: relative;
   z-index: 2;
   font-size: 14px;
@@ -106,6 +108,7 @@ margin-top: -12%;
   flex-wrap: wrap;
   margin-left: 50px;
   margin-top: 30px;
+
 }
 
 .productlist{
@@ -115,6 +118,8 @@ margin-top: -12%;
 
 .card{
   border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 5px;
 }
 
 
@@ -134,6 +139,8 @@ margin-top: -12%;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 13ch;
+  margin-left: 80px;
+  margin-top: 2px;
 }
 
 #text-card{
@@ -149,4 +156,5 @@ margin-top: -12%;
 .btn{
   background-color: #FFAB5E;
   border-color: #FFAB5E;
+  margin-left: 90px;
 }
