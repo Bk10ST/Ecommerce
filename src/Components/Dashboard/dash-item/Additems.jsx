@@ -104,7 +104,7 @@ const Additems = () => {
             <div class="form-group col-md-4">
               <label for="inputState">Type</label>
               <select id="inputState" value={items} name="type" onChange={handleChangeInput} className="form-control" >
-                <option>Choose...</option> 
+                <option>-- Choose --</option> 
                 <option>Ios</option>
                 <option >Andriod</option>
               </select>

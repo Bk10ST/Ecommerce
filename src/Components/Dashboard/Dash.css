@@ -7,7 +7,7 @@
     position: fixed;
   z-index: 1;
   overflow-x: hidden;
-  margin-top: -3%;
+  margin-top: -5%;
     position: fixed;
     /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 }
@@ -42,7 +42,7 @@ cursor: pointer;
 .header-dash{
     /* text-align: center; */
     margin-left: 700px;
-    margin-top: -590px;
+    margin-top: -600px;
     
 }
 
@@ -63,7 +63,7 @@ cursor: pointer;
   }
   
   .th1 {
-    background-color: #E6E7E9;
+    background-color: rgba(255,171,93,1);
   }
   
   img {
@@ -71,7 +71,10 @@ cursor: pointer;
     height: auto;
   }
   
-  
+  .backtohome{
+    width: 200px;
+    margin-left: 300px;
+  }
 
 
  

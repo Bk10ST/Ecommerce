@@ -1,10 +1,12 @@
 import React from 'react'
 import './Dash.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import FetchData from "../ProductApi/IphoneApi";
 
+
 const Dashboard = () => {
+  const navigate = useNavigate();
   const {data , isLoading, isError}= useQuery({
     queryKey: ["products"] ,
     queryFn: FetchData
@@ -26,6 +28,9 @@ const style={
 
   return (
     <div className='dash-main'>
+      <div className="backtohome">
+        <button onClick={()=>navigate('/')}>Back to home</button>
+      </div>
       <div className="sidenav">
         <h1 className='nav-head'>TechStore</h1>
         <div className="nav-item">
