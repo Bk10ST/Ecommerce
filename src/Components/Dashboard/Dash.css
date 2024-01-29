@@ -53,7 +53,7 @@ cursor: pointer;
   }
   
   .th-text, .td-text {
-    border: 1px solid #ddd;
+    border: 2px solid black;
     padding: 8px;
     text-align: left;
     background-color: rgba(255,171,93,1);
