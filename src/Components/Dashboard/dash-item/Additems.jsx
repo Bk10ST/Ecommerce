@@ -4,6 +4,7 @@ import "./item.css";
 import { Link} from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid';
 import { QueryClient, useMutation } from '@tanstack/react-query'
+
 import  { createProduct }  from "../../ProductApi/IphoneApi";
 
 
@@ -20,14 +21,20 @@ const Additems = () => {
     title: "", 
     type: "" ,
     amount: "",
+    images: null,
+   
   })
 
 
   const handleChangeInput=(e)=> {
     setItems({
       ...items , 
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value , 
+      
     })
+
+
+  
 
   }
   const createPostMutation = useMutation({
@@ -38,21 +45,28 @@ const Additems = () => {
     }
   });
 
+  const handleImage = (e) => {
+   setItems(e.target.files[0]);
+  };
+
+
   
   const handleSubmit=()=> {
     createPostMutation.mutate({
       id: uuidv4() , 
       ...items,
     })
+   
 
     setItems({
       title : "" ,
     type: "" ,
-    number: "",
+    amount: "",
+    images: null
+    
       })
 
   }
-
 
   
 
@@ -110,17 +124,18 @@ const Additems = () => {
               </select>
             </div>
             
-            {/* <div className="form-group">
+            <div className="form-group">
               <label htmlFor="exampleFormControlFile1">Product Image</label>
               <input
                 type="file"
                 className="form-control-file"
-                name="file"
-                value={isImage}
+                name="images"
+                accept="images/*"
+                // value={(e)=> setItems(e.target.files)}
                 id="exampleFormControlFile1"
-                onChange={(e)=> {setIsImage(e.target.files[0])}}
+                onChange={handleImage}
               />
-            </div> */}
+            </div>
           </div>
 
           <div className="number-field">

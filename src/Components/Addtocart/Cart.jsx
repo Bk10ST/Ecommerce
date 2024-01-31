@@ -4,11 +4,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ViewData } from '../ProductApi/IphoneApi';
 import { motion } from 'framer-motion';
 import './Cart.css'
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css'; 
+import { addToCart } from '../CartSlice/CartSice';
+import { useDispatch } from 'react-redux'
+
+
 
 const Cart = () => {
   const [quantity , setQuantity]= useState(1);
+  const dispatch= useDispatch();
  
   const { id }= useParams()
   console.log("id: " , id)
@@ -18,6 +21,10 @@ const Cart = () => {
     queryKey: ["products" , id], 
     queryFn: ()=> ViewData(id),
 })
+// console.log(data , "currently shown product")
+
+
+
 
 
 if (isLoading) {
@@ -31,6 +38,8 @@ if (isError) {
 if (!data) {
   return <div>No data available for this post</div>;
 }
+
+
 
 const handleIncrement=()=>{
 if(quantity < 5){
@@ -46,6 +55,12 @@ const handleDecrement=()=>{
   setQuantity(quantity -1)
  }
 }
+
+const handleAddToCart=(item)=> {
+  dispatch(addToCart(item));
+  navigate('/confirm');
+}
+ 
 
   return (
     <div>
@@ -70,12 +85,14 @@ const handleDecrement=()=>{
                 <td  className="table-item"><button className='incrementbtn' onClick={handleIncrement} >+</button><span>  {quantity}</span><button className='decreaseBtn' onClick={handleDecrement}>-</button></td>
                 <td  className="table-item">
                 <p className='total'>Total: {item.amount}</p>
-                  <button>Order</button></td>
+                {console.log(item , "items")}
+                  <button type='button' onClick={()=> handleAddToCart(item)}>Order</button></td>
               </tbody>
             </table>
           })}
         </motion.div>
-        <ToastContainer />
+
+       
         
         
     </div>

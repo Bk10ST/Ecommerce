@@ -26,10 +26,11 @@ export const ViewData = async (id) => {
 
 
 export const createProduct = async (newPost) => {
+  
   try {
     const productApi = await axios.post("http://localhost:3000/products/", newPost, {
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 
       },
     });
 

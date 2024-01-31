@@ -64,6 +64,7 @@ cursor: pointer;
   
   .th1 {
     background-color: rgba(255,171,93,1);
+    
   }
   
   img {
@@ -76,5 +77,9 @@ cursor: pointer;
     margin-left: 300px;
   }
 
-
+.list{
+  margin-left: 500px;
+  margin-top: 50px;
+}
  
+  
