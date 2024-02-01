@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/main.css";
 import pic from "./Images/nav-circle.png";
 import pic1 from "./Images/applelogo.png";
@@ -11,6 +11,7 @@ import Footer from './Footer/Footer'
 
 const Home = () => {
 const navigate= useNavigate();
+
   const {data , isLoading, isError}= useQuery({
     queryKey: ["products"] ,
     queryFn: FetchData
@@ -18,7 +19,7 @@ const navigate= useNavigate();
 
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className="loading">Loading...</p>;
   }
   
   if (isError) {
@@ -27,7 +28,6 @@ const navigate= useNavigate();
   
 
   console.log(data)
-
 
 
   const linkStyle = {
@@ -103,6 +103,8 @@ const navigate= useNavigate();
             ;
           })}
         </motion.div>
+      
+
       </div>
       
       <div className="footer">

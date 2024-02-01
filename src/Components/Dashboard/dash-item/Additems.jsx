@@ -17,12 +17,19 @@ const Additems = () => {
     color: "white",
   };
 
-  const [items , setItems]= useState({
-    title: "", 
-    type: "" ,
-    amount: "",
-    images: null,
+  // const [items , setItems]= useState({
+  //   productName: "", 
+  //   productCategory: "" ,
+  //   amount: "",
+  //   images: null,
    
+  // })
+
+  const [items , setItems]=useState({
+    title: "" , 
+    type: "" , 
+    amount: "" , 
+    images: " ", 
   })
 
 
@@ -46,7 +53,11 @@ const Additems = () => {
   });
 
   const handleImage = (e) => {
-   setItems(e.target.files[0]);
+   setItems(
+   ...items ,
+   [e.target.name]= e.target.files[0]
+   
+    );
   };
 
 
@@ -58,11 +69,20 @@ const Additems = () => {
     })
    
 
+
+    // setItems({
+    //   productName : "" ,
+    // productCategory: "" ,
+    // amount: "",
+    // images: null
+    
+    //   })
+    
     setItems({
-      title : "" ,
-    type: "" ,
-    amount: "",
-    images: null
+    title :"" ,
+    type: "", 
+    amount: "" ,
+    images: null ,
     
       })
 
@@ -84,12 +104,12 @@ const Additems = () => {
             </li>
             <li>
               <Link to="/addproduc" style={style}>
-                <i class="fa-solid fa-plus"></i> &nbsp;add-items
+                <i className="fa-solid fa-plus"></i> &nbsp;add-items
               </Link>
             </li>
             <li>
               <Link to="/order" style={style}>
-                <i class="fa-solid fa-list"></i> &nbsp;Order's
+                <i className="fa-solid fa-list"></i> &nbsp;Order's
               </Link>
             </li>
           </ul>
@@ -107,17 +127,18 @@ const Additems = () => {
               <label htmlFor="">Product Name : </label>
               <input
                 type="text"
+                name="title"
               value={items[name]}
-              name="title"
+              // name="productName"
                 className="form-control"
                 placeholder="Product Name"
                 onChange={handleChangeInput}
               />
             </div>
 
-            <div class="form-group col-md-4">
-              <label for="inputState">Type</label>
-              <select id="inputState" value={items} name="type" onChange={handleChangeInput} className="form-control" >
+            <div className="form-group col-md-4">
+              <label htmlFor="inputState">Type</label>
+              <select id="inputState" value={items[name]} name="type" onChange={handleChangeInput} className="form-control" >
                 <option>-- Choose --</option> 
                 <option>Ios</option>
                 <option >Andriod</option>
@@ -158,9 +179,13 @@ const Additems = () => {
 
         </form>
 
+    {/* <p>{items.productName}</p>
+    <p>{items.productCategory}</p>
+    <p>{items.amount}</p> */}
     <p>{items.title}</p>
     <p>{items.type}</p>
     <p>{items.amount}</p>
+    <p>{items.images}</p>
       </div>
     </div>
   );
