@@ -1,95 +1,73 @@
 import React, { useState } from "react";
 import "../Dash.css";
 import "./item.css";
-import { Link} from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
-import { QueryClient, useMutation } from '@tanstack/react-query'
+import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 
-import  { createProduct }  from "../../ProductApi/IphoneApi";
-
+import { createProduct } from "../../ProductApi/IphoneApi";
 
 const Additems = () => {
-
-
-
   const style = {
     textDecoration: "none",
     color: "white",
   };
 
   // const [items , setItems]= useState({
-  //   productName: "", 
+  //   productName: "",
   //   productCategory: "" ,
   //   amount: "",
   //   images: null,
-   
+
   // })
 
-  const [items , setItems]=useState({
-    title: "" , 
-    type: "" , 
-    amount: "" , 
-    images: " ", 
-  })
+  const [items, setItems] = useState({
+    title: "",
+    type: "",
+    amount: "",
+    images: "",
+  });
 
-
-  const handleChangeInput=(e)=> {
+  const handleChangeInput = (e) => {
     setItems({
-      ...items , 
-      [e.target.name]: e.target.value , 
-      
-    })
+      ...items,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-
-  
-
-  }
   const createPostMutation = useMutation({
-    mutationFn: createProduct, 
-    onSuccess: ()=> {
-      QueryClient.invalidateQueries({queryKey: ['POST']});
-      console.log("sucess")
-    }
+    mutationFn: createProduct,
+    onSuccess: () => {
+      QueryClient.invalidateQueries({ queryKey: ["POST"] });
+      console.log("sucess");
+    },
   });
 
   const handleImage = (e) => {
-   setItems(
-   ...items ,
-   [e.target.name]= e.target.files[0]
-   
-    );
+    setItems(...items, ([e.target.name] = e.target.files[0]));
   };
 
-
-  
-  const handleSubmit=()=> {
+  const handleSubmit = () => {
     createPostMutation.mutate({
-      id: uuidv4() , 
+      id: uuidv4(),
       ...items,
-    })
-   
-
+    });
 
     // setItems({
     //   productName : "" ,
     // productCategory: "" ,
     // amount: "",
     // images: null
-    
+
     //   })
-    
+
     setItems({
-    title :"" ,
-    type: "", 
-    amount: "" ,
-    images: null ,
-    
-      })
-
-  }
-
-  
-
+      title: "",
+      type: "",
+      amount: "",
+      images: null,
+    });
+  };
 
   return (
     <div>
@@ -128,8 +106,8 @@ const Additems = () => {
               <input
                 type="text"
                 name="title"
-              value={items[name]}
-              // name="productName"
+                value={items[name]}
+                // name="productName"
                 className="form-control"
                 placeholder="Product Name"
                 onChange={handleChangeInput}
@@ -138,13 +116,19 @@ const Additems = () => {
 
             <div className="form-group col-md-4">
               <label htmlFor="inputState">Type</label>
-              <select id="inputState" value={items[name]} name="type" onChange={handleChangeInput} className="form-control" >
-                <option>-- Choose --</option> 
+              <select
+                id="inputState"
+                value={items[name]}
+                name="type"
+                onChange={handleChangeInput}
+                className="form-control"
+              >
+                <option>-- Choose --</option>
                 <option>Ios</option>
-                <option >Andriod</option>
+                <option>Andriod</option>
               </select>
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="exampleFormControlFile1">Product Image</label>
               <input
@@ -169,23 +153,22 @@ const Additems = () => {
                 onChange={handleChangeInput}
                 className="form-control"
                 placeholder="Product Amount"
-                
               />
             </div>
           </div>
 
-          <button type="submit" className="btn btn-primary">Add</button>
-
-
+          <button type="submit" className="btn btn-primary">
+            Add
+          </button>
         </form>
 
-    {/* <p>{items.productName}</p>
+        {/* <p>{items.productName}</p>
     <p>{items.productCategory}</p>
     <p>{items.amount}</p> */}
-    <p>{items.title}</p>
-    <p>{items.type}</p>
-    <p>{items.amount}</p>
-    <p>{items.images}</p>
+        <p>{items.title}</p>
+        <p>{items.type}</p>
+        <p>{items.amount}</p>
+        <p>{items.images}</p>
       </div>
     </div>
   );

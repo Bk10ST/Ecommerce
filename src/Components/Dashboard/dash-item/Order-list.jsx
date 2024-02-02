@@ -4,14 +4,9 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-
-
-
 const Order = () => {
-  const orderList= useSelector(state=> state.order)
-  console.log(orderList , "orders on orderList")
-
- 
+  const orderList = useSelector((state) => state.order);
+  console.log(orderList, "orders on orderList");
 
   const style = {
     textDecoration: "none",
@@ -44,19 +39,39 @@ const Order = () => {
 
       <div className="info">
         <h1 className="header-dash">Order-list</h1>
-  <div className="list">
-  {
-      orderList.order?.map((item , index)=> {
-        return <div key={index}>
-          <div key={item.id}>
-          <p>{item.title}</p>
-          <p>{item.type}</p>
-          <img src={item.images} alt="" />
-          <p>{item.amount}</p>
-        </div></div>
-      })
-    } 
-  </div>
+        <div className="list">
+          return{" "}
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">NO.</th>
+                <th scope="col">Title</th>
+                <th scope="col">Type</th>
+                <th scope="col">Image</th>
+                <th scope="col">Amount</th>
+                <th scope="col">UserID</th>
+              </tr>
+            </thead>
+
+            {orderList.order?.map((item, index) => {
+              return (
+                <tbody key={index}>
+                  <br />
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{item.title}</td>
+                    <td>{item.type}</td>
+                    <td>{item.amount}</td>
+                    <td>
+                      <img src={item.images} alt="" />
+                    </td>
+                    <td>usernname</td>
+                  </tr>
+                </tbody>
+              );
+            })}
+          </table>
+        </div>
       </div>
     </div>
   );
