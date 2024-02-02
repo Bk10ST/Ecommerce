@@ -22,7 +22,7 @@ const Cart = () => {
     queryKey: ["products", id],
     queryFn: () => ViewData(id),
   });
-  // console.log(data , "currently shown product")
+  
 
   if (isLoading) {
     return <div>Loading...</div>;

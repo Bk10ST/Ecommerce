@@ -61,7 +61,8 @@ const style={
             return   <tbody className='td1'>
             <td className='td-text'>{item.title}</td>
             <td className='td-text'>{item.type}</td>
-            <td className='td-text'><img src={item.images} alt="" /></td>
+            <td className='td-text'><img src={item.base} alt="" /></td>
+
             <td className='td-text'>{item.amount}</td>
           </tbody>
           })

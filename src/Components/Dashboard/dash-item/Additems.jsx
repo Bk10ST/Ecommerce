@@ -25,7 +25,7 @@ const Additems = () => {
     title: "",
     type: "",
     amount: "",
-    images: "",
+    images: null,
   });
 
   const handleChangeInput = (e) => {
@@ -43,9 +43,29 @@ const Additems = () => {
     },
   });
 
-  const handleImage = (e) => {
-    setItems(...items, ([e.target.name] = e.target.files[0]));
+  const handleImage =async (e) => {
+  const file= e.target.files[0];
+  const base = await convertToBase64(file);
+  console.log(base)
+  setItems({
+    ...items , 
+     base,
+  })
   };
+
+  const convertToBase64=(file)=> {
+      return new Promise((resolve , reject)=> {
+        const filereader= new FileReader();
+        filereader.readAsDataURL(file);
+
+        filereader.onload=()=> {
+          resolve(filereader.result);
+        }
+        filereader.onerror=()=>{
+          reject(error);
+        }
+      })
+  }
 
   const handleSubmit = () => {
     createPostMutation.mutate({

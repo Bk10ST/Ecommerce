@@ -1,8 +1,13 @@
 import React from 'react'
+import './style.css'
 
 const ConfirmPage = () => {
   return (
-    <div>ConfirmPage</div>
+    <div>
+      <header className='page-heading'>
+            Order=Confirm
+      </header>
+    </div>
     
   )
 }
