@@ -79,7 +79,7 @@ const Cart = () => {
                 <td className="table-item">{item.type}</td>
                 <td className="table-item">{item.amount}</td>
                 <td className="table-item">
-                  <img src={item.images} alt="" />
+                  <img src={item.base} alt="" />
                 </td>
                 <td className="table-item">
                   <button className="incrementbtn" onClick={handleIncrement}>

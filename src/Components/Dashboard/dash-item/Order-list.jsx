@@ -63,7 +63,7 @@ const Order = () => {
                     <td>{item.type}</td>
                     <td>{item.amount}</td>
                     <td>
-                      <img src={item.images} alt="" />
+                      <img src={item.base} alt="" />
                     </td>
                     <td>usernname</td>
                   </tr>
