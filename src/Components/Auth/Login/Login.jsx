@@ -1,11 +1,12 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../Index.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Login = () => {
+
+const Login = ({onLogin}) => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -19,7 +20,6 @@ const Login = () => {
     onSubmit: async (values) => {
       const data = await axios.post(
         "https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/login",
-        // 'https://jsonplaceholder.typicode.com/posts', 
         {
           userName: values.username,
           password: values.password,
@@ -27,21 +27,22 @@ const Login = () => {
         {
           headers: {
             Accept: "application/json",
-            "Content-Type": "application/json", 
+            "Content-Type": "application/json",
             "ngrok-skip-browser-warning": "true",
           },
         }
       );
+
       if (data.data) {
+        
+        onLogin(values.username, values.password);
+
         navigate("/dashboard");
         localStorage.setItem("session", JSON.stringify(data.data));
         Swal.fire({
           title: "Welcome To the Dashboard!",
-          
-         
         });
       }
-      
     },
   });
 
@@ -85,7 +86,7 @@ const Login = () => {
             Login
           </button>
           <p className="text-center mt-3">
-            Don't have an account? <a href="./signup">Sign Up Here!!</a>
+            Don't have an account? <Link to="/signup">Sign Up Here!!</Link>
           </p>
         </div>
       </div>

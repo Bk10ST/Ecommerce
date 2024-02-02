@@ -1,222 +1,122 @@
-import React from "react";
-import './css/main.css'
-import { motion, spring } from "framer-motion";
-import { Link } from "react-router-dom";
-import { useProducts } from "./useProduct.jsx";
+import React, { useState } from "react";
+import "./css/main.css";
+import pic from "./Images/nav-circle.png";
+import pic1 from "./Images/applelogo.png";
+import pic2 from "./Images/logo.png";
+import { motion } from "framer-motion";
+import { Link, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import FetchData from "../ProductApi/IphoneApi";
+import Footer from "./Footer/Footer";
 
-const HomePage = () => {
-  const {
-    handleChange,
-    filterdata, 
-    styleChanged,
-    searchTerm,
-    setSearchTerm,
-    data,
-  } = useProducts();
-  
+const Home = () => {
+  const navigate = useNavigate();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["products"],
+    queryFn: FetchData,
+  });
+
+  if (isLoading) {
+    return <p className="loading">Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error fetching data</p>;
+  }
+
+  console.log(data);
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "black",
+  };
   return (
-    <div className="maindiv">
-      <div className="main">
-        <div className="menulogo">
-          <i
-            className="fa-solid fa-bars fa-2xl"
-            onClick={handleChange}
-            id="menu-bar"
-          ></i>
-        </div>
-        <motion.div className="navbar">
-          <motion.span
-            whileInView={{
-              marginLeft: "-40px",
-            }}
-            transition={{
-              duration: 2,
-              stiffness: "spring",
-            }}
-            className="best"
-          >
-            Best
-          </motion.span>
-          <motion.span
-            whileInView={{
-              marginLeft: "40px",
-            }}
-            transition={{
-              duration: 2,
-              stiffness: "spring",
-            }}
-            className="deal"
-          >
-            Deal
-          </motion.span>
-          <span className="tech">Tech Store</span>
-          <div className="navbar-heading">
-            <div
-              id="mySidenav"
-              className={styleChanged ? "sidenav1" : "sidenav"}
-            >
-              <h1 className="secondaryHeading">Tech Store</h1>
-              <a href="#">
-                <i className="fa-solid fa-house"></i>{" "}
-                <span className="mx-1">Home</span>
-              </a>
-              <Link to="/signup">
-                <i className="fa-solid fa-user-plus"></i>{" "}
-                <span className="mx-1">Signup</span>
+    <div className="main">
+      <div className="navbar">
+        <h1 className="nav-header">TechStore</h1>
+        <nav className="nav-items">
+          <ul>
+            <li>
+              <i class="fa-solid fa-house"></i>&nbsp; Home
+            </li>
+            <li>
+              <Link style={linkStyle} to="/available">
+                <i class="fa-solid fa-circle-check"></i>&nbsp; Available
               </Link>
-              <Link to="/login">
-                <i className="fa-regular fa-user"></i>{" "}
-                <span className="mx-2">Login</span>
-              </Link>
-              
-            </div>
-          </div>
-          <motion.div className="iphonegroup"></motion.div>
-          <motion.div
-            animate={{
-              marginTop: "580px",
-            }}
-            transition={{
-              duration: 3,
-              type: "spring",
-            }}
-            className="applelogo"
-          ></motion.div>
-          <div className="profile">
-            <i
-              className="fa-solid fa-cart-shopping fa-2xl"
-              style={{ color: "#000000" }}
-            ></i>
-          </div>
-          <div className="searchInput">
-            <input
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              type="text"
-              placeholder="  search..."
-            />
-        
-          </div>
-          {/* suggestion div */}
-        
-      {searchTerm && (
-        <div className="listsuggest" >
-          {filterdata.length > 0 ? (
-            filterdata.map((suggest, index) => (
-              <ul key={index} className="suggestion-box">
-                <li style={{ color: "black" }}>- {suggest.productName}</li>
-              </ul>
-            ))
-          ) : (
-            <p className="non-found">No results found</p>
-          )}
-        </div>
-      )}
+            </li>
+            {/* <li><Link style={linkStyle}  to='/blog'>Blog</Link></li> */}
+            {/* <li><Link style={linkStyle} to='/contact'>Contact</Link></li> */}
+          </ul>
+        </nav>
 
-          <div className="search"></div>
+        <div className="nav-img">
+          <p className="dashboard">
+            <Link style={linkStyle} to="/dashboard">
+              {" "}
+              Dashboard &nbsp; <i className="fa-solid fa-bars"></i>
+            </Link>
+          </p>
+          <img src={pic} alt="" />
+        </div>
+
+        <div className="apple-group">
+          <img src={pic1} alt="" />
+        </div>
+
+        <div className="apple-logo">
+          <img src={pic2} alt="" />
+        </div>
+
+        <div className="phone-text">
+          <h1>Iphone 11</h1>
+          <h5>Available at your store</h5>
+          <h6>only for $999</h6>
+        </div>
+      </div>
+
+      <div className="item-collection">
+        <h1>Collection</h1>
+        <motion.div className="product-section">
+          {data.map((item) => {
+            return (
+              <div whileHover={{ scale: 1.1 }} className="productlist">
+                <motion.div
+                  className="card"
+                  style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
+                  key={item.id}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <img src={item.images} alt="" className="api-image" />
+                  <div className="card-body">
+                    <h5 className="card-title" id="title-card">
+                      {item.title}
+                    </h5>
+                    <br />
+                    <p className="card-text" id="text-card">
+                      {item.type}
+                    </p>
+                    <p className="card-text">{item.amount}</p>
+
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => navigate(`/cart/${item.id}`)}
+                    >
+                      VIEW
+                    </button>
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
         </motion.div>
       </div>
-      {/* api export */}
 
-      <h1 className="productheading">Product's</h1>
-      <motion.div className="product-section">
-        {data.map((items, index) => {
-          return (
-            <motion.div key={index} 
-            whileHover={{ scale: 1.1 }}
-            className="productlist">
-              <motion.div
-
-                className="card"
-                style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
-                key={items.id}
-              >
-                <img
-                  src={`https://4bfb-2407-1400-aa0e-3788-14d7-d2cb-2ca8-4f61.ngrok-free.app/${items.productImages[0].imageUrl}` 
-                }
-                  alt=""
-                  className="api-image" 
-                  
-          
-                />
-                <div className="card-body">
-                  <h5
-                    className="card-title"
-                    id="title-card"
-                    
-                  >
-                    {items.productName}
-                  </h5>
-                  <br />
-                  <p
-                    className="card-title"
-                    id="title-card"
-                    
-                  >
-                    {items.productCategory}
-                  </p>
-                  <br />
-                  <p
-                    className="card-text"
-                    id="text-card"
-                   
-                  >
-                    {items.description}
-                  </p>
-                  <p className="card-text">$ {items.amount}</p>
-                  
-                  <Link to='/addtocart' href="#"  className="btn btn-primary">
-                    Add to cart
-                  </Link>
-                  
-                </div>
-              </motion.div>
-            </motion.div>
-          );
-        })}
-      </motion.div>
-
-      
-
-      {/* footer */}
-
-      <div className="home-footer">
-        <ul className="footer-heading">
-          <li className="list-text">
-            <i className="fa-solid fa-house"></i> Home
-          </li>
-          <li className="list-text">
-            <i className="fa-solid fa-user-plus"></i> Login
-          </li>
-          <li className="list-text">
-            <i className="fa-regular fa-user"></i> SignUp
-          </li>
-        </ul>
-<div className="mobileicon">
-  <ul>
-    <li className="mobile-icon"><i class="fa-brands fa-android fa-2xl"></i></li>
-    <li className="mobile-icon"><i class="fa-brands fa-apple fa-2xl"></i></li>
-  </ul>
-</div>
-
-        <div className="line"></div>
-
-      <div className="socialmedia">
-      <ul>
-      <li className="list-icon">
-        <i class="fa-brands fa-facebook"></i>
-          </li>
-          <li className="list-icon">
-          <i class="fa-brands fa-twitter"></i>
-          </li>
-          <li className="list-icon">
-          <i class="fa-brands fa-instagram"></i>
-          </li>
-      </ul>
-      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default Home;

@@ -1,3 +1,85 @@
-.from-field{
+
+.sidenav{
+    background-color: rgba(255,171,93,1);
+    height: 120vh;
+    width: 20%;
+    padding: 30px;
+    position: fixed;
+  z-index: 1;
+  overflow-x: hidden;
+  margin-top: -5%;
+    position: fixed;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+}
+
+.nav-head{
+color: white;
+font-size: 30px;
+margin-left: 30px;
+margin-top: 10px;
+}
+
+.nav-item > ul > li{
+list-style-type: none;
+font-size: 15px;
+color: white;
+margin-top: 50px;
+margin-left: 10px;
+cursor: pointer;
+}
+
+
+
+
+
+
+
+.info{
+  margin-top: 615px;
+}
+
+
+.header-dash{
+    /* text-align: center; */
+    margin-left: 700px;
+    margin-top: -600px;
     
 }
+
+.tab1 {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-left: 350px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+  }
+  
+  .th-text, .td-text {
+    /* border: 3px solid black; */
+    padding: 8px;
+    text-align: left;
+    background-color: rgba(255,171,93,1);
+  }
+  
+  .th1 {
+    background-color: rgba(255,171,93,1);
+    
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .backtohome{
+    width: 200px;
+    margin-left: 300px;
+  }
+
+.list{
+  margin-left: 200px;
+  margin-top: 50px;
+}
+ 
+  
