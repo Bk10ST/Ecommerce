@@ -1,21 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ViewData } from "../ProductApi/IphoneApi";
 import { motion } from "framer-motion";
 import "./Cart.css";
-import { addToCart } from "../CartSlice/CartSice";
+import { addToCart, updateQuantity, updatedPrice } from "../CartSlice/CartSice";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
-const [quantity, setQuantity] = useState(0);
-  const [totalPrice , setTotalPrice]=useState(0);
-  // const [availableQuantity , setAvailableQuantity]= useState(1);
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
- 
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -26,7 +24,6 @@ const [quantity, setQuantity] = useState(0);
     queryKey: ["products", id],
     queryFn: () => ViewData(id),
   });
-  
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -39,42 +36,36 @@ const [quantity, setQuantity] = useState(0);
   if (!data) {
     return <div>No data available for this post</div>;
   }
-  
-  const handleIncrement = (ProductAmount,) => {
-  const price = ProductAmount;
-  console.log("price is", price)
-  if(quantity < 5){
-    setQuantity(quantity + 1);
-  }
-  if(totalPrice < price * 5){
-    setTotalPrice(totalPrice + price)
-  }
-  }
 
+  const handleIncrement = (ProductAmount) => {
+    const price = ProductAmount;
 
-  const handleDecrement = (amount ) => {
-    const price = amount;
-    if (quantity === 0) {
-      setQuantity(0);
-    } else {
-      setQuantity(quantity - 1);
-      setTotalPrice(totalPrice - price)
-      
-      
+    console.log("price is", price);
+    if (totalQuantity < 5) {
+      setTotalQuantity(totalQuantity + 1);
     }
-
+    if (totalPrice < price * 5) {
+      setTotalPrice(totalPrice + price);
+    }
   };
 
- 
+  const handleDecrement = (amount) => {
+    const price = amount;
+    if (totalQuantity === 0) {
+      setTotalQuantity(0);
+    } else {
+      setTotalQuantity(totalQuantity - 1);
+      setTotalPrice(totalPrice - price);
+    }
+  };
 
   const handleAddToCart = (item) => {
-    if(quantity === 0){
-      alert('please select quantity')
-    }else{
-      dispatch(addToCart(item , quantity , totalPrice));
-    
-    navigate("/confirm");
-    toast.success("Lorem ipsum dolor");
+    if (totalQuantity === 0) {
+      alert("please select quantity");
+    } else {
+      dispatch(addToCart(item));
+      navigate("/confirm");
+      toast.success("Lorem ipsum dolor");
     }
   };
 
@@ -104,20 +95,28 @@ const [quantity, setQuantity] = useState(0);
                   <img src={item.base} alt="" />
                 </td>
                 <td className="table-item">
-                  <p 
-                  className="quantity-container"
-                  >Availiable upto {item.quantity}</p>
-                  <button className="incrementbtn" onClick={()=> handleIncrement(item.amount )}>
+                  <p className="quantity-container">
+                    Availiable upto {item.quantity}{" "}
+                  </p>
+                  <button
+                    className="incrementbtn"
+                    onClick={() => handleIncrement(item.amount)}
+                  >
                     +
                   </button>
-                  <span> {quantity}</span>
-        
-                  <button className="decreaseBtn" onClick={()=> handleDecrement(item.amount)}>
+                  <span> {totalQuantity}</span>
+
+                  <button
+                    className="decreaseBtn"
+                    onClick={() => handleDecrement(item.amount)}
+                  >
                     -
                   </button>
                 </td>
                 <td className="table-item">
-                  <p className="total" >Total:  <span> {totalPrice}</span></p>
+                  <p className="total">
+                    Total: <span> {totalPrice}</span>
+                  </p>
                   {console.log(item, "items")}
                   <button type="button" onClick={() => handleAddToCart(item)}>
                     Order

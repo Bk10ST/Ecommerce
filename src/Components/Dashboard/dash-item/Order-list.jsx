@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 const Order = () => {
   const orderList = useSelector((state) => state.order);
+
   console.log(orderList, "orders on orderList");
 
   const style = {
@@ -38,7 +39,7 @@ const Order = () => {
       </div>
 
       <div className="info">
-        <h1 className="header-dash">Order-list</h1>
+        <h1 className="header-dash1">Order-list</h1>
         <div className="list">
           return{" "}
           <table className="table2 table-striped">
@@ -67,13 +68,11 @@ const Order = () => {
                       <img src={item.base} alt="" />
                     </td>
                     <td>{item.quantity}</td>
-                    <td>{item.totalprice}</td>
+                    <td>username</td>
                   </tr>
                 </tbody>
               );
             })}
-
-            {/* <p>{orderList.qua}</p> */}
           </table>
         </div>
       </div>

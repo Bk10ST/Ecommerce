@@ -30,16 +30,15 @@ const Additems = () => {
   });
 
   const handleChangeInput = (e) => {
-    const value = e.target.name === "amount" 
-    ? parseFloat(e.target.value)  
-    : e.target.value;
+    const value =
+      e.target.name === "amount" ? parseFloat(e.target.value) : e.target.value;
 
-  setItems({
-    ...items,
-    [e.target.name]: value,
-  });
+    setItems({
+      ...items,
+      [e.target.name]: value,
+    });
   };
-  
+
   const createPostMutation = useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
@@ -48,40 +47,41 @@ const Additems = () => {
     },
   });
 
-  const handleQuantity=(e)=> {
-    const quantity = e.target.name === "quantity" 
-    ? parseFloat(e.target.value)  
-    : e.target.value;
+  const handleQuantity = (e) => {
+    const quantity =
+      e.target.name === "quantity"
+        ? parseFloat(e.target.value)
+        : e.target.value;
 
     setItems({
-    ...items , 
-    [e.target.name]: quantity,
-    })
-  }
-
-  const handleImage =async (e) => {
-  const file= e.target.files[0];
-  const base = await convertToBase64(file);
-  console.log(base)
-  setItems({
-    ...items , 
-     base,
-  })
+      ...items,
+      [e.target.name]: quantity,
+    });
   };
 
-  const convertToBase64=(file)=> {
-      return new Promise((resolve , reject)=> {
-        const filereader= new FileReader();
-        filereader.readAsDataURL(file);
+  const handleImage = async (e) => {
+    const file = e.target.files[0];
+    const base = await convertToBase64(file);
+    console.log(base);
+    setItems({
+      ...items,
+      base,
+    });
+  };
 
-        filereader.onload=()=> {
-          resolve(filereader.result);
-        }
-        filereader.onerror=()=>{
-          reject(error);
-        }
-      })
-  }
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const filereader = new FileReader();
+      filereader.readAsDataURL(file);
+
+      filereader.onload = () => {
+        resolve(filereader.result);
+      };
+      filereader.onerror = () => {
+        reject(error);
+      };
+    });
+  };
 
   const handleSubmit = () => {
     createPostMutation.mutate({

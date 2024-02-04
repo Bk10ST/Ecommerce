@@ -1,4 +1,4 @@
-/* Add this CSS to your existing stylesheet or create a new one */
+
 
 .table2 {
     width: 94.6%;
@@ -26,10 +26,14 @@
     border-radius: 5px;
   }
   
-  /* Responsive styles */
+
   @media (max-width: 768px) {
     .table2 {
       overflow-x: auto;
     }
   }
   
+
+  .header-dash1{
+    margin-left: 650px;
+  }
