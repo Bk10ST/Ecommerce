@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import "../Dash.css";
+import "./Order.css";
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -41,7 +41,7 @@ const Order = () => {
         <h1 className="header-dash">Order-list</h1>
         <div className="list">
           return{" "}
-          <table class="table table-striped">
+          <table className="table2 table-striped">
             <thead>
               <tr>
                 <th scope="col">NO.</th>
@@ -49,6 +49,7 @@ const Order = () => {
                 <th scope="col">Type</th>
                 <th scope="col">Image</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Quantity</th>
                 <th scope="col">UserID</th>
               </tr>
             </thead>
@@ -65,11 +66,14 @@ const Order = () => {
                     <td>
                       <img src={item.base} alt="" />
                     </td>
-                    <td>usernname</td>
+                    <td>{item.quantity}</td>
+                    <td>{item.totalprice}</td>
                   </tr>
                 </tbody>
               );
             })}
+
+            {/* <p>{orderList.qua}</p> */}
           </table>
         </div>
       </div>

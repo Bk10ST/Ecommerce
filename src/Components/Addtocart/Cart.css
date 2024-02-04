@@ -3,11 +3,12 @@
 }
 
 
-  .product-section {
+  .product-section1 {
     margin-top: 20px;
+    /* margin-left: 100px; */
   }
   
-  .cart-table {
+  .cart-table1 {
     width: 100%;
     border-collapse: collapse;
     /* margin-bottom: 40px; */
@@ -51,4 +52,8 @@
   
   .total{
     margin-left: 50px;
+  }
+
+  .quantity-container{
+    margin-left: 120px;
   }

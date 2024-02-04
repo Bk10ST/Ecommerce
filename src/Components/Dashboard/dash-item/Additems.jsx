@@ -24,17 +24,22 @@ const Additems = () => {
   const [items, setItems] = useState({
     title: "",
     type: "",
-    amount: "",
-    images: null,
+    quantity: 0,
+    amount: 0,
+    base: null,
   });
 
   const handleChangeInput = (e) => {
-    setItems({
-      ...items,
-      [e.target.name]: e.target.value,
-    });
-  };
+    const value = e.target.name === "amount" 
+    ? parseFloat(e.target.value)  
+    : e.target.value;
 
+  setItems({
+    ...items,
+    [e.target.name]: value,
+  });
+  };
+  
   const createPostMutation = useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
@@ -42,6 +47,17 @@ const Additems = () => {
       console.log("sucess");
     },
   });
+
+  const handleQuantity=(e)=> {
+    const quantity = e.target.name === "quantity" 
+    ? parseFloat(e.target.value)  
+    : e.target.value;
+
+    setItems({
+    ...items , 
+    [e.target.name]: quantity,
+    })
+  }
 
   const handleImage =async (e) => {
   const file= e.target.files[0];
@@ -84,8 +100,9 @@ const Additems = () => {
     setItems({
       title: "",
       type: "",
-      amount: "",
-      images: null,
+      quantity: 0,
+      amount: 0,
+      base: null,
     });
   };
 
@@ -159,6 +176,20 @@ const Additems = () => {
                 // value={(e)=> setItems(e.target.files)}
                 id="exampleFormControlFile1"
                 onChange={handleImage}
+              />
+            </div>
+          </div>
+
+          <div className="number-field">
+            <div className="col">
+              <label htmlFor="">Product Quantity : </label>
+              <input
+                type="number"
+                name="quantity"
+                value={items[name]}
+                onChange={handleQuantity}
+                className="form-control"
+                placeholder="Product Quantity"
               />
             </div>
           </div>

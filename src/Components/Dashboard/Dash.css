@@ -1,85 +1,112 @@
 
-.sidenav{
-    background-color: rgba(255,171,93,1);
-    height: 120vh;
-    width: 20%;
-    padding: 30px;
-    position: fixed;
-  z-index: 1;
-  overflow-x: hidden;
-  margin-top: -5%;
-    position: fixed;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+.dash-main {
+  display: flex;
 }
 
-.nav-head{
-color: white;
-font-size: 30px;
-margin-left: 30px;
-margin-top: 10px;
+.sidenav {
+  background-color: rgba(255,171,93,1);
+  color: white;
+  padding: 20px;
+  width: 200px;
+  height: 630px;
+  position: fixed;
 }
 
-.nav-item > ul > li{
-list-style-type: none;
-font-size: 15px;
-color: white;
-margin-top: 50px;
-margin-left: 10px;
-cursor: pointer;
+.nav-head {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 
-
-
-
-
-
-.info{
-  margin-top: 615px;
+.nav-item {
+  margin-left: 20px;
+  margin-top: 60px;
 }
 
+.nav-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-.header-dash{
-    /* text-align: center; */
-    margin-left: 700px;
-    margin-top: -600px;
-    
+.nav-item li {
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: white;
+}
+
+.info {
+  flex: 1;
+  padding: 20px;
+}
+
+.header-dash {
+  font-size: 2rem;
+  margin-left: 300px;
+  margin-top: 10px;
+}
+
+.table {
+  margin-top: 120px;
+  margin-left: -682px;
 }
 
 .tab1 {
-    width: 70%;
-    border-collapse: collapse;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    margin-left: 350px;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-  }
-  
-  .th-text, .td-text {
-    /* border: 3px solid black; */
-    padding: 8px;
-    text-align: left;
-    background-color: rgba(255,171,93,1);
-  }
-  
-  .th1 {
-    background-color: rgba(255,171,93,1);
-    
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .backtohome{
-    width: 200px;
-    margin-left: 300px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+
+.th1, .td1 {
+  background-color: #333;
+  color: white;
+}
+
+.th-text, .td-text {
+  padding: 10px;
+  text-align: left;
+}
+
+.th-text {
+  font-weight: bold;
+}
+
+.td1:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.image-container {
+  max-width: 50px;
+  max-height: 50px;
+  border-radius: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .dash-main {
+    flex-direction: column;
   }
 
-.list{
-  margin-left: 200px;
-  margin-top: 50px;
+  .sidenav {
+    width: 100%;
+  }
+
+  .info {
+    width: 100%;
+  }
 }
- 
-  
+
+.backtohome{
+  margin-left: 220px;
+}
+
+button {
+  width: 120px;
+}

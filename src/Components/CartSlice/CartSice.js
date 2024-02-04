@@ -4,6 +4,7 @@ const OrderAddFunction = createSlice({
   name: "orderlist",
   initialState: {
     order: [],
+    
   },
 
 
@@ -11,6 +12,7 @@ const OrderAddFunction = createSlice({
     addToCart: (state, action) => {
         state.order.push({...action.payload})
     },
+    
   },
 });
 

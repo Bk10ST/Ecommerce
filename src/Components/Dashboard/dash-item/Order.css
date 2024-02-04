@@ -1,0 +1,35 @@
+/* Add this CSS to your existing stylesheet or create a new one */
+
+.table2 {
+    width: 94.6%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 90px;
+  }
+  
+  .table2 th, .table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table2 th {
+    background-color: #f2f2f2;
+  }
+  
+  .table2 tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table2 img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 5px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .table2 {
+      overflow-x: auto;
+    }
+  }
+  

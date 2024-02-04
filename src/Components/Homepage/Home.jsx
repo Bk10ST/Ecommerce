@@ -68,6 +68,11 @@ const Home = () => {
           <img src={pic2} alt="" />
         </div>
 
+        <div className="offer">
+          <p className="first-loop">20% Discount Febuary 20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary20% Discount Febuary</p>
+        
+        </div>
+
         <div className="phone-text">
           <h1>Iphone 11</h1>
           <h5>Available at your store</h5>
@@ -90,13 +95,14 @@ const Home = () => {
                   <img src={item.base} alt="" className="api-image" />
                   <div className="card-body">
                     <h5 className="card-title" id="title-card">
-                      {item.title}
+                       {item.title}
                     </h5>
                     <br />
                     <p className="card-text" id="text-card">
-                      {item.type}
+                     Type:  {item.type}
                     </p>
-                    <p className="card-text">{item.amount}</p>
+                    <p className="card-text">Quantity: {item.quantity}</p>
+                    <p className="card-text">Amount: {item.amount}</p>
 
                     <button
                       className="btn btn-primary"

@@ -11,7 +11,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
+const [quantity, setQuantity] = useState(0);
+  const [totalPrice , setTotalPrice]=useState(0);
+  // const [availableQuantity , setAvailableQuantity]= useState(1);
+
+ 
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -35,25 +39,43 @@ const Cart = () => {
   if (!data) {
     return <div>No data available for this post</div>;
   }
+  
+  const handleIncrement = (ProductAmount,) => {
+  const price = ProductAmount;
+  console.log("price is", price)
+  if(quantity < 5){
+    setQuantity(quantity + 1);
+  }
+  if(totalPrice < price * 5){
+    setTotalPrice(totalPrice + price)
+  }
+  }
 
-  const handleIncrement = () => {
-    if (quantity < 5) {
-      setQuantity(quantity + 1);
-    }
-  };
 
-  const handleDecrement = () => {
-    if (quantity === 1) {
-      setQuantity(1);
+  const handleDecrement = (amount ) => {
+    const price = amount;
+    if (quantity === 0) {
+      setQuantity(0);
     } else {
       setQuantity(quantity - 1);
+      setTotalPrice(totalPrice - price)
+      
+      
     }
+
   };
 
+ 
+
   const handleAddToCart = (item) => {
-    dispatch(addToCart(item));
+    if(quantity === 0){
+      alert('please select quantity')
+    }else{
+      dispatch(addToCart(item , quantity , totalPrice));
+    
     navigate("/confirm");
     toast.success("Lorem ipsum dolor");
+    }
   };
 
   return (
@@ -62,11 +84,11 @@ const Cart = () => {
       <h1 className="cart-header">
         Cart &nbsp; <i className="fa-solid fa-cart-shopping"></i>
       </h1>
-      <motion.div className="product-section">
+      <motion.div className="product-section1">
         {data.map((item) => {
           return (
-            <table className="cart-table">
-              <thead className="table-header">
+            <table className="cart-table1">
+              <thead className="table-header1">
                 <th className="table-text">Product Name</th>
                 <th className="table-text">Type</th>
                 <th className="table-text">Amount</th>
@@ -82,16 +104,20 @@ const Cart = () => {
                   <img src={item.base} alt="" />
                 </td>
                 <td className="table-item">
-                  <button className="incrementbtn" onClick={handleIncrement}>
+                  <p 
+                  className="quantity-container"
+                  >Availiable upto {item.quantity}</p>
+                  <button className="incrementbtn" onClick={()=> handleIncrement(item.amount )}>
                     +
                   </button>
                   <span> {quantity}</span>
-                  <button className="decreaseBtn" onClick={handleDecrement}>
+        
+                  <button className="decreaseBtn" onClick={()=> handleDecrement(item.amount)}>
                     -
                   </button>
                 </td>
                 <td className="table-item">
-                  <p className="total">Total: {item.amount}</p>
+                  <p className="total" >Total:  <span> {totalPrice}</span></p>
                   {console.log(item, "items")}
                   <button type="button" onClick={() => handleAddToCart(item)}>
                     Order
