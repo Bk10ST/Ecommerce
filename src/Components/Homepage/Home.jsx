@@ -12,7 +12,9 @@ import Footer from "./Footer/Footer";
 const Home = () => {
   const navigate = useNavigate();
   const [limitProduct , setLimitProduct]= useState(6);
-
+  useEffect(()=> {
+    FetchData();
+  }, [])
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
     queryFn: FetchData,
@@ -27,9 +29,7 @@ const Home = () => {
   }
 
 
-  useEffect(()=> {
-    FetchData();
-  }, [])
+
 
   console.log(data);
 
@@ -92,7 +92,7 @@ const Home = () => {
       <div className="item-collection">
         <h1>Collection</h1>
         <motion.div className="product-section">
-          {data && data.slice(0, 2).map((item) => {
+          {data && data.slice(0, 9).map((item) => {
             return (
               <div whileHover={{ scale: 1.1 }} className="productlist">
                 <motion.div
