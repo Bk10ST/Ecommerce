@@ -51,8 +51,6 @@ const Home = () => {
                 <i class="fa-solid fa-circle-check"></i>&nbsp; Available
               </Link>
             </li>
-            {/* <li><Link style={linkStyle}  to='/blog'>Blog</Link></li> */}
-            {/* <li><Link style={linkStyle} to='/contact'>Contact</Link></li> */}
           </ul>
         </nav>
 

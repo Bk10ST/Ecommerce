@@ -88,11 +88,11 @@ const Cart = () => {
                 <th className="table-text">confirm</th>
               </thead>
               <tbody className="table-body">
-                <td className="table-item">{item.title}</td>
+                <td className="table-item" ><h3>{item.title}</h3></td>
                 <td className="table-item">{item.type}</td>
                 <td className="table-item">{item.amount}</td>
                 <td className="table-item">
-                  <img src={item.base} alt="" />
+                  <img src={item.base} alt="" className="image-port" />
                 </td>
                 <td className="table-item">
                   <p className="quantity-container">
