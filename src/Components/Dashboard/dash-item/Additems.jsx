@@ -13,14 +13,6 @@ const Additems = () => {
     color: "white",
   };
 
-  // const [items , setItems]= useState({
-  //   productName: "",
-  //   productCategory: "" ,
-  //   amount: "",
-  //   images: null,
-
-  // })
-
   const [items, setItems] = useState({
     title: "",
     type: "",
@@ -89,14 +81,6 @@ const Additems = () => {
       ...items,
     });
 
-    // setItems({
-    //   productName : "" ,
-    // productCategory: "" ,
-    // amount: "",
-    // images: null
-
-    //   })
-
     setItems({
       title: "",
       type: "",
@@ -144,7 +128,6 @@ const Additems = () => {
                 type="text"
                 name="title"
                 value={items[name]}
-                // name="productName"
                 className="form-control"
                 placeholder="Product Name"
                 onChange={handleChangeInput}
@@ -173,7 +156,6 @@ const Additems = () => {
                 className="form-control-file"
                 name="images"
                 accept="images/*"
-                // value={(e)=> setItems(e.target.files)}
                 id="exampleFormControlFile1"
                 onChange={handleImage}
               />
@@ -213,9 +195,6 @@ const Additems = () => {
           </button>
         </form>
 
-        {/* <p>{items.productName}</p>
-    <p>{items.productCategory}</p>
-    <p>{items.amount}</p> */}
         <p>{items.title}</p>
         <p>{items.type}</p>
         <p>{items.amount}</p>

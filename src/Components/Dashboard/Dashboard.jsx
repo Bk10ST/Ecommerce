@@ -28,7 +28,7 @@ const Dashboard = () => {
     <div className="dash-main">
       <div className="backtohome">
         <button onClick={() => navigate("/")}>Back to home</button>
-      </div> 
+      </div>
       <div className="info">
         <h1 className="header-dash">DashBoard</h1>
       </div>
@@ -55,8 +55,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-     
-
       <div className="table">
         <table className="tab1">
           <thead className="th1">
@@ -70,15 +68,14 @@ const Dashboard = () => {
           {data.map((item) => {
             return (
               <tbody className="td1">
-              <td className="td-text">{item.title}</td>
-              <td className="td-text">{item.type}</td>
-              <td className="td-text">
-                <img src={item.base} alt="" className="image-container"/>
-              </td>
-              <td className="td-text">{item.quantity}</td>
-              <td className="td-text">{item.amount}</td>
-
-            </tbody>
+                <td className="td-text">{item.title}</td>
+                <td className="td-text">{item.type}</td>
+                <td className="td-text">
+                  <img src={item.base} alt="" className="image-container" />
+                </td>
+                <td className="td-text">{item.quantity}</td>
+                <td className="td-text">{item.amount}</td>
+              </tbody>
             );
           })}
         </table>

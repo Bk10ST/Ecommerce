@@ -11,10 +11,10 @@ import Footer from "./Footer/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [limitProduct , setLimitProduct]= useState(6);
-  useEffect(()=> {
+  const [limitProduct, setLimitProduct] = useState(6);
+  useEffect(() => {
     FetchData();
-  }, [])
+  }, []);
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products"],
     queryFn: FetchData,
@@ -27,9 +27,6 @@ const Home = () => {
   if (isError) {
     return <p>Error fetching data</p>;
   }
-
-
-
 
   console.log(data);
 
@@ -90,38 +87,39 @@ const Home = () => {
       <div className="item-collection">
         <h1>Collection</h1>
         <motion.div className="product-section">
-          {data && data.slice(0, 9).map((item) => {
-            return (
-              <div whileHover={{ scale: 1.1 }} className="productlist">
-                <motion.div
-                  className="card"
-                  style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
-                  key={item.id}
-                  whileHover={{ scale: 1.1 }}
-                >
-                  <img src={item.base} alt="" className="api-image" />
-                  <div className="card-body">
-                    <h5 className="card-title" id="title-card">
-                      {item.title}
-                    </h5>
-                    <br />
-                    <p className="card-text" id="text-card">
-                      Type: {item.type}
-                    </p>
-                    <p className="card-text">Quantity: {item.quantity}</p>
-                    <p className="card-text">Amount: {item.amount}</p>
+          {data &&
+            data.slice(0, 9).map((item) => {
+              return (
+                <div whileHover={{ scale: 1.1 }} className="productlist">
+                  <motion.div
+                    className="card"
+                    style={{ width: "18rem", fontFamily: "Lato , sans-serif" }}
+                    key={item.id}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    <img src={item.base} alt="" className="api-image" />
+                    <div className="card-body">
+                      <h5 className="card-title" id="title-card">
+                        {item.title}
+                      </h5>
+                      <br />
+                      <p className="card-text" id="text-card">
+                        Type: {item.type}
+                      </p>
+                      <p className="card-text">Quantity: {item.quantity}</p>
+                      <p className="card-text">Amount: {item.amount}</p>
 
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => navigate(`/cart/${item.id}`)}
-                    >
-                      VIEW
-                    </button>
-                  </div>
-                </motion.div>
-              </div>
-            );
-          })}
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => navigate(`/cart/${item.id}`)}
+                      >
+                        VIEW
+                      </button>
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
         </motion.div>
       </div>
 

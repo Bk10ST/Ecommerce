@@ -1,29 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { ViewData } from "../ProductApi/IphoneApi";
-import { motion } from "framer-motion";
+import React from "react";
 import "./Cart.css";
-import { addToCart, updateQuantity, updatedPrice } from "../CartSlice/CartSice";
-import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
+import CartFunction from "./CartFunction";
+import { motion } from "framer-motion";
+import { ToastContainer } from "react-toastify";
 
 const Cart = () => {
-  const [totalQuantity, setTotalQuantity] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-  console.log("id: ", id);
-  const navigate = useNavigate();
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["products", id],
-    queryFn: () => ViewData(id),
-  });
+  const {
+    navigate,
+    totalPrice,
+    totalQuantity,
+    handleAddToCart,
+    handleDecrement,
+    handleIncrement,
+    data,
+    isError,
+    isLoading,
+  } = CartFunction();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -36,38 +28,6 @@ const Cart = () => {
   if (!data) {
     return <div>No data available for this post</div>;
   }
-
-  const handleIncrement = (ProductAmount) => {
-    const price = ProductAmount;
-
-    console.log("price is", price);
-    if (totalQuantity < 5) {
-      setTotalQuantity(totalQuantity + 1);
-    }
-    if (totalPrice < price * 5) {
-      setTotalPrice(totalPrice + price);
-    }
-  };
-
-  const handleDecrement = (amount) => {
-    const price = amount;
-    if (totalQuantity === 0) {
-      setTotalQuantity(0);
-    } else {
-      setTotalQuantity(totalQuantity - 1);
-      setTotalPrice(totalPrice - price);
-    }
-  };
-
-  const handleAddToCart = (item) => {
-    if (totalQuantity === 0) {
-      alert("please select quantity");
-    } else {
-      dispatch(addToCart(item));
-      navigate("/confirm");
-      toast.success("Lorem ipsum dolor");
-    }
-  };
 
   return (
     <div>
@@ -88,7 +48,9 @@ const Cart = () => {
                 <th className="table-text">confirm</th>
               </thead>
               <tbody className="table-body">
-                <td className="table-item" ><h3>{item.title}</h3></td>
+                <td className="table-item">
+                  <h3>{item.title}</h3>
+                </td>
                 <td className="table-item">{item.type}</td>
                 <td className="table-item">{item.amount}</td>
                 <td className="table-item">
