@@ -1,6 +1,7 @@
 
 .dash-main {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .sidenav {
@@ -48,13 +49,13 @@
 
 .header-dash {
   font-size: 2rem;
-  margin-left: 300px;
+  margin-left: 230px;
   margin-top: 10px;
 }
 
 .table {
   margin-top: 120px;
-  margin-left: -1040px;
+  margin-left: -950px;
 
 }
 
@@ -106,6 +107,7 @@
 
 .backtohome{
   margin-left: 220px;
+  margin-top: -8px;
 }
 
 button {
@@ -129,3 +131,10 @@ button {
   color: white;
   font-size: 18px;
 }
+
+.slogan{
+  font-size: 90px;
+  width: 40px;
+  color: white;
+}
+

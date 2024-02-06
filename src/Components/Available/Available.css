@@ -1,0 +1,41 @@
+.Available-container{
+    width: 100%;
+    height: 100%;
+}
+
+.nav-container{
+    width: 20%;
+    height: 610px;
+    position: fixed;
+    background-color: #FFAB5E;
+}
+.nav-item-head{
+    color: white;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+.nav-list{
+    margin-top: 50px;
+    margin-left: 20px;
+}
+.nav-list > ul {
+    list-style-type: none;
+}
+
+.nav-list > ul > li {
+    margin-top: 30px;
+    color: white;
+}
+
+
+.product-section-available{
+    margin-left: 300px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.available-card-header{
+    margin-left: 690px;
+}
+

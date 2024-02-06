@@ -4,7 +4,7 @@ import "./item.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { QueryClient, useMutation } from "@tanstack/react-query";
-
+import './addlist.css'
 import { createProduct } from "../../ProductApi/IphoneApi";
 
 const Additems = () => {
@@ -115,87 +115,88 @@ const Additems = () => {
           </ul>
         </div>
       </div>
+      <div className="custom-info">
+  <h1 className="custom-header-dash">Add items</h1>
+</div>
 
-      <div className="info">
-        <h1 className="header-dash">Add items</h1>
+<div className="custom-input-field">
+  <form onSubmit={handleSubmit}>
+    <div className="custom-form-row">
+      <div className="custom-col">
+        <label htmlFor="">Product Name : </label>
+        <input
+          type="text"
+          name="title"
+          value={items[name]}
+          className="custom-form-control"
+          placeholder="Product Name"
+          onChange={handleChangeInput}
+        />
       </div>
 
-      <div className="input-field">
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="col">
-              <label htmlFor="">Product Name : </label>
-              <input
-                type="text"
-                name="title"
-                value={items[name]}
-                className="form-control"
-                placeholder="Product Name"
-                onChange={handleChangeInput}
-              />
-            </div>
-
-            <div className="form-group col-md-4">
-              <label htmlFor="inputState">Type</label>
-              <select
-                id="inputState"
-                value={items[name]}
-                name="type"
-                onChange={handleChangeInput}
-                className="form-control"
-              >
-                <option>-- Choose --</option>
-                <option>Ios</option>
-                <option>Andriod</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="exampleFormControlFile1">Product Image</label>
-              <input
-                type="file"
-                className="form-control-file"
-                name="images"
-                accept="images/*"
-                id="exampleFormControlFile1"
-                onChange={handleImage}
-              />
-            </div>
-          </div>
-
-          <div className="number-field">
-            <div className="col">
-              <label htmlFor="">Product Quantity : </label>
-              <input
-                type="number"
-                name="quantity"
-                value={items[name]}
-                onChange={handleQuantity}
-                className="form-control"
-                placeholder="Product Quantity"
-              />
-            </div>
-          </div>
-
-          <div className="number-field">
-            <div className="col">
-              <label htmlFor="">Product Amount : </label>
-              <input
-                type="number"
-                name="amount"
-                value={items[name]}
-                onChange={handleChangeInput}
-                className="form-control"
-                placeholder="Product Amount"
-              />
-            </div>
-          </div>
-
-          <button type="submit" className="btn btn-primary">
-            Add
-          </button>
-        </form>
+      <div className="custom-form-group custom-col-md-4">
+        <label htmlFor="inputState">Type</label>
+        <select
+          id="inputState"
+          value={items[name]}
+          name="type"
+          onChange={handleChangeInput}
+          className="custom-form-control"
+        >
+          <option>-- Choose --</option>
+          <option>iphone</option>
+          <option>ipad</option>
+          <option>MacBook</option>
+        </select>
       </div>
+
+      <div className="custom-form-group">
+        <label htmlFor="exampleFormControlFile1">Product Image</label>
+        <input
+          type="file"
+          className="custom-form-control-file"
+          name="images"
+          accept="images/*"
+          id="exampleFormControlFile1"
+          onChange={handleImage}
+        />
+      </div>
+    </div>
+
+    <div className="custom-number-field">
+      <div className="custom-col">
+        <label htmlFor="">Product Quantity : </label>
+        <input
+          type="number"
+          name="quantity"
+          value={items[name]}
+          onChange={handleQuantity}
+          className="custom-form-control"
+          placeholder="Product Quantity"
+        />
+      </div>
+    </div>
+
+    <div className="custom-number-field">
+      <div className="custom-col">
+        <label htmlFor="">Product Amount : </label>
+        <input
+          type="number"
+          name="amount"
+          value={items[name]}
+          onChange={handleChangeInput}
+          className="custom-form-control"
+          placeholder="Product Amount"
+        />
+      </div>
+    </div>
+
+    <button type="submit" className="custom-btn custom-btn-primary">
+      Add
+    </button>
+  </form>
+</div>
+
     </div>
   );
 };

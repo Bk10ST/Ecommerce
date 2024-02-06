@@ -1,6 +1,11 @@
 .input-field{
     margin-left: 300px;
     margin-top: 20px;
+    padding: 30px;
+}
+
+.info{
+    padding: 10px;
 }
 
 label{
@@ -31,3 +36,4 @@ label{
 .form-control-file{
     margin-left: 110px;
 }
+

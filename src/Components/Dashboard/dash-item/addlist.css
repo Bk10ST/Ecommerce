@@ -1,0 +1,78 @@
+.custom-info {
+    margin-bottom: 20px;
+    margin-left: 300px;
+  }
+  
+  .custom-header-dash {
+    font-size: 34px;
+    color: #333;
+    margin-left: 340px;
+  }
+  
+  .custom-input-field {
+    /* background-color: #f9f9f9; */
+    padding: 20px;
+    border-radius: 8px;
+    margin-left: 450px;
+    margin-top: 50px;
+  }
+  
+  .custom-form-row {
+    margin-bottom: 20px;
+  }
+  
+  .custom-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .custom-form-control {
+    width: 500px; 
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    line-height: 1.5; 
+  }
+  
+  
+  .custom-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .custom-col-md-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+  
+  .custom-form-control-file {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .custom-number-field {
+    margin-bottom: 20px;
+  }
+  
+  .custom-btn {
+    padding: 10px 20px;
+    background-color: rgba(255,171,93,1);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .custom-btn-primary {
+    background-color:rgba(255,171,93,1);
+  }
+  
+  .custom-btn:hover {
+    background-color: rgba(255,171,93,1);
+  }
+  
+  .custom-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255,171,93,1);
+  }
+  
