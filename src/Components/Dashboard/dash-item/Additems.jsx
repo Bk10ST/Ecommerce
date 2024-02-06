@@ -6,6 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import './addlist.css'
 import { createProduct } from "../../ProductApi/IphoneApi";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Additems = () => {
   const style = {
@@ -81,7 +84,7 @@ const Additems = () => {
       id: uuidv4(),
       ...items,
     });
-
+    toast("product added")
     setItems({
       title: "",
       type: "",
@@ -93,6 +96,7 @@ const Additems = () => {
 
   return (
     <div>
+       <ToastContainer />
       <div className="sidenav">
         <h1 className="nav-head">TechStore</h1>
         <div className="nav-item">
@@ -190,7 +194,7 @@ const Additems = () => {
         />
       </div>
     </div>
-
+   
     <button type="submit" className="custom-btn custom-btn-primary">
       Add
     </button>

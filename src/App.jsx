@@ -9,7 +9,7 @@ import SignUp from './Components/Auth/Sign/Sign';
 import Additems from './Components/Dashboard/dash-item/Additems';
 import Order from './Components/Dashboard/dash-item/Order-list';
 import ConfirmPage from './Components/Confirm/ConfirmPage';
-
+import Index from './Components/text/Index'
 
 
 
@@ -42,6 +42,7 @@ const App = () => {
           <Route path='/addproduc' element={<Additems/>}/>
           <Route path='/order/' element={<Order/>}/>
           <Route path='/confirm' element={<ConfirmPage/>} />
+          <Route path='/text' element={<Index/>}/>
         </Routes>
       </Router>
     </div>

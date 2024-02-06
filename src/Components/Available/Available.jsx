@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import FetchData from "../ProductApi/IphoneApi";
+
 const Available = () => {
 
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Available = () => {
               </Link>
             </li>
         
-           {/* <li className='slogan'>IPHONE</li> */}
+           {/* <li className='slogan'><img src={pic} alt="" /></li> */}
          
         </ul>
        </div>

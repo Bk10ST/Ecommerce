@@ -7,6 +7,7 @@
     width: 20%;
     height: 610px;
     position: fixed;
+    margin-top: -40px;
     background-color: #FFAB5E;
 }
 .nav-item-head{
@@ -37,5 +38,10 @@
 
 .available-card-header{
     margin-left: 690px;
+    /* position: absolute; */
+    margin-top: 40px;
 }
 
+#cart-function {
+    margin-left: 60px;
+}

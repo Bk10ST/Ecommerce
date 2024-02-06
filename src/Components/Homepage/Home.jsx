@@ -11,7 +11,7 @@ import Footer from "./Footer/Footer";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [limitProduct, setLimitProduct] = useState(6);
+  // const [limitProduct, setLimitProduct] = useState(6);
   useEffect(() => {
     FetchData();
   }, []);
@@ -69,11 +69,44 @@ const Home = () => {
           <img src={pic2} alt="" />
         </div>
 
-        <div className="phone-text">
-          <h1>Iphone 11</h1>
-          <h5>Available at your store</h5>
-          <h6>only for $999</h6>
-        </div>
+        <motion.div className="phone-text">
+          <motion.h1 
+          initial={{
+            marginLeft: "-400px", 
+            opacity: 0
+          }}
+          animate={{
+            marginLeft: "-200px",
+            transition: {duration: 1} ,
+            opacity : 1
+
+          }}
+          >Iphone 11</motion.h1>
+          <motion.h5 
+           initial={{
+            marginLeft: "-400px", 
+            opacity: 0
+          }}
+          animate={{
+            marginLeft: "-60px",
+            transition: {duration: 1.5}, 
+            opacity: 1
+
+          }}
+          >Available at your store</motion.h5>
+          <motion.h6
+          initial={{
+            marginLeft: "-440px", 
+            opacity: 0
+          }}
+          animate={{
+            marginLeft: "-10px",
+            transition: {duration: 1} ,
+            opacity : 1
+
+          }}
+          >only for $999</motion.h6>
+        </motion.div>
       </div>
 
       <div className="item-collection">
