@@ -13,25 +13,21 @@ const Additems = () => {
     color: "white",
   };
 
-  // const [items , setItems]= useState({
-  //   productName: "",
-  //   productCategory: "" ,
-  //   amount: "",
-  //   images: null,
-
-  // })
-
   const [items, setItems] = useState({
     title: "",
     type: "",
-    amount: "",
-    images: "",
+    quantity: 0,
+    amount: 0,
+    base: null,
   });
 
   const handleChangeInput = (e) => {
+    const value =
+      e.target.name === "amount" ? parseFloat(e.target.value) : e.target.value;
+
     setItems({
       ...items,
-      [e.target.name]: e.target.value,
+      [e.target.name]: value,
     });
   };
 
@@ -43,29 +39,55 @@ const Additems = () => {
     },
   });
 
-  const handleImage = (e) => {
-    setItems(...items, ([e.target.name] = e.target.files[0]));
+  const handleQuantity = (e) => {
+    const quantity =
+      e.target.name === "quantity"
+        ? parseFloat(e.target.value)
+        : e.target.value;
+
+    setItems({
+      ...items,
+      [e.target.name]: quantity,
+    });
   };
 
-  const handleSubmit = () => {
+  const handleImage = async (e) => {
+    const file = e.target.files[0];
+    const base = await convertToBase64(file);
+    console.log(base);
+    setItems({
+      ...items,
+      base,
+    });
+  };
+
+  const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const filereader = new FileReader();
+      filereader.readAsDataURL(file);
+
+      filereader.onload = () => {
+        resolve(filereader.result);
+      };
+      filereader.onerror = () => {
+        reject(error);
+      };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     createPostMutation.mutate({
       id: uuidv4(),
       ...items,
     });
 
-    // setItems({
-    //   productName : "" ,
-    // productCategory: "" ,
-    // amount: "",
-    // images: null
-
-    //   })
-
     setItems({
       title: "",
       type: "",
-      amount: "",
-      images: null,
+      quantity: 0,
+      amount: 0,
+      base: null,
     });
   };
 
@@ -107,7 +129,6 @@ const Additems = () => {
                 type="text"
                 name="title"
                 value={items[name]}
-                // name="productName"
                 className="form-control"
                 placeholder="Product Name"
                 onChange={handleChangeInput}
@@ -136,9 +157,22 @@ const Additems = () => {
                 className="form-control-file"
                 name="images"
                 accept="images/*"
-                // value={(e)=> setItems(e.target.files)}
                 id="exampleFormControlFile1"
                 onChange={handleImage}
+              />
+            </div>
+          </div>
+
+          <div className="number-field">
+            <div className="col">
+              <label htmlFor="">Product Quantity : </label>
+              <input
+                type="number"
+                name="quantity"
+                value={items[name]}
+                onChange={handleQuantity}
+                className="form-control"
+                placeholder="Product Quantity"
               />
             </div>
           </div>
@@ -161,14 +195,6 @@ const Additems = () => {
             Add
           </button>
         </form>
-
-        {/* <p>{items.productName}</p>
-    <p>{items.productCategory}</p>
-    <p>{items.amount}</p> */}
-        <p>{items.title}</p>
-        <p>{items.type}</p>
-        <p>{items.amount}</p>
-        <p>{items.images}</p>
       </div>
     </div>
   );

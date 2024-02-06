@@ -1,28 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { ViewData } from "../ProductApi/IphoneApi";
-import { motion } from "framer-motion";
+import React from "react";
 import "./Cart.css";
-import { addToCart } from "../CartSlice/CartSice";
-import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
+import CartFunction from "./CartFunction";
+import { motion } from "framer-motion";
+import { ToastContainer } from "react-toastify";
 
 const Cart = () => {
-  const [quantity, setQuantity] = useState(1);
-  const dispatch = useDispatch();
-
-  const { id } = useParams();
-  console.log("id: ", id);
-  const navigate = useNavigate();
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["products", id],
-    queryFn: () => ViewData(id),
-  });
-  // console.log(data , "currently shown product")
+  const {
+    navigate,
+    totalPrice,
+    totalQuantity,
+    handleAddToCart,
+    handleDecrement,
+    handleIncrement,
+    data,
+    isError,
+    isLoading,
+  } = CartFunction();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -36,37 +29,17 @@ const Cart = () => {
     return <div>No data available for this post</div>;
   }
 
-  const handleIncrement = () => {
-    if (quantity < 5) {
-      setQuantity(quantity + 1);
-    }
-  };
-
-  const handleDecrement = () => {
-    if (quantity === 1) {
-      setQuantity(1);
-    } else {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const handleAddToCart = (item) => {
-    dispatch(addToCart(item));
-    navigate("/confirm");
-    toast.success("Lorem ipsum dolor");
-  };
-
   return (
     <div>
       <button onClick={() => navigate("/")}>back to list</button>
       <h1 className="cart-header">
         Cart &nbsp; <i className="fa-solid fa-cart-shopping"></i>
       </h1>
-      <motion.div className="product-section">
+      <motion.div className="product-section1">
         {data.map((item) => {
           return (
-            <table className="cart-table">
-              <thead className="table-header">
+            <table className="cart-table1">
+              <thead className="table-header1">
                 <th className="table-text">Product Name</th>
                 <th className="table-text">Type</th>
                 <th className="table-text">Amount</th>
@@ -75,23 +48,37 @@ const Cart = () => {
                 <th className="table-text">confirm</th>
               </thead>
               <tbody className="table-body">
-                <td className="table-item">{item.title}</td>
+                <td className="table-item">
+                  <h3>{item.title}</h3>
+                </td>
                 <td className="table-item">{item.type}</td>
                 <td className="table-item">{item.amount}</td>
                 <td className="table-item">
-                  <img src={item.images} alt="" />
+                  <img src={item.base} alt="" className="image-port" />
                 </td>
                 <td className="table-item">
-                  <button className="incrementbtn" onClick={handleIncrement}>
+                  <p className="quantity-container">
+                    Availiable upto {item.quantity}{" "}
+                  </p>
+                  <button
+                    className="incrementbtn"
+                    onClick={() => handleIncrement(item.amount)}
+                  >
                     +
                   </button>
-                  <span> {quantity}</span>
-                  <button className="decreaseBtn" onClick={handleDecrement}>
+                  <span> {totalQuantity}</span>
+
+                  <button
+                    className="decreaseBtn"
+                    onClick={() => handleDecrement(item.amount)}
+                  >
                     -
                   </button>
                 </td>
                 <td className="table-item">
-                  <p className="total">Total: {item.amount}</p>
+                  <p className="total">
+                    Total: <span> {totalPrice}</span>
+                  </p>
                   {console.log(item, "items")}
                   <button type="button" onClick={() => handleAddToCart(item)}>
                     Order

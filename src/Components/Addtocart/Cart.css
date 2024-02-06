@@ -1,13 +1,18 @@
+*{
+  font-weight: bold;
+}
+
 .cart-header{
     text-align: center;
 }
 
 
-  .product-section {
+  .product-section1 {
     margin-top: 20px;
+    /* margin-left: 100px; */
   }
   
-  .cart-table {
+  .cart-table1 {
     width: 100%;
     border-collapse: collapse;
     /* margin-bottom: 40px; */
@@ -24,9 +29,10 @@
     background-color: #f2f2f2;
   }
   
-  img {
-    max-width: 100%;
-    height: auto;
+  .image-port {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5px;
   }
   
   button {
@@ -50,5 +56,10 @@
   }
   
   .total{
-    margin-left: 50px;
+    margin-left: 70px;
+    font-weight: bold;
+  }
+
+  .quantity-container{
+    margin-left: 120px;
   }

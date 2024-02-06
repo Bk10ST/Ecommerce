@@ -6,17 +6,17 @@ body {
 }
 .v6_12 {
   width: 100%;
-  height: 272px;
+  height: 210px;
   background: rgba(255,171,93,1);
   opacity: 1;
   position: absolute;
-  top: 1650px;
+  top: 1750px;
   left: 0px;
   overflow: hidden;
 }
 .v6_29 {
   width: 41px;
-  height: 38px;
+  height: 8px;
   background: rgba(255,255,255,1);
   opacity: 1;
   position: absolute;
@@ -75,8 +75,8 @@ body {
   width: 238px;
   color: rgba(0,0,0,1);
   position: absolute;
-  top: 64px;
-  left: 82px;
+  top: 24px;
+  left: 22px;
   font-family: Istok Web;
   font-weight: Bold;
   font-size: 50px;
@@ -86,15 +86,16 @@ body {
 .v6_14 {
   width: 569px;
   height: 30px;
-  background: url("../images/v6_14.png");
+  /* background: url("../images/v6_14.png"); */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 85px;
-  left: 449px;
+  top: 55px;
+  left: 350px;
   overflow: hidden;
+  /* z-index: 2; */
 }
 .v6_15 {
   width: 53px;
@@ -104,7 +105,7 @@ body {
   left: 0px;
   font-family: Istok Web;
   font-weight: Regular;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 1;
   text-align: left;
 }
@@ -116,7 +117,7 @@ body {
   left: 151px;
   font-family: Istok Web;
   font-weight: Regular;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 1;
   text-align: left;
 }
@@ -128,7 +129,7 @@ body {
   left: 328px;
   font-family: Istok Web;
   font-weight: Regular;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 1;
   text-align: left;
 }
@@ -140,7 +141,7 @@ body {
   left: 466px;
   font-family: Istok Web;
   font-weight: Regular;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 1;
   text-align: left;
 }
@@ -148,18 +149,18 @@ body {
   width: 171px;
   color: rgba(0,0,0,1);
   position: absolute;
-  top: 200px;
-  left: 95px;
+  top: 150px;
+  left: 30px;
   font-family: Istok Web;
   font-weight: Regular;
-  font-size: 20px;
+  font-size: 15px;
   opacity: 1;
   text-align: left;
 }
 .v6_20 {
   width: 144px;
   height: 40px;
-  background: url("../images//v6_20.png");
+  background: url("../images/v6_20.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
