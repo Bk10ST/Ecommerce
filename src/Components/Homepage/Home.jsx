@@ -122,14 +122,14 @@ const Home = () => {
                     key={item.id}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <img src={item.base} alt="" className="api-image" />
+                    <img src={item.productImages[0]} alt="" className="api-image" />
                     <div className="card-body">
                       <h5 className="card-title" id="title-card">
-                        {item.title}
+                        {item.productName}
                       </h5>
                       <br />
                       <p className="card-text" id="text-card">
-                        Type: {item.type}
+                        Type: {item.productCategory}
                       </p>
                       <p className="card-text">Quantity: {item.quantity}</p>
                       <p className="card-text">Amount: {item.amount}</p>

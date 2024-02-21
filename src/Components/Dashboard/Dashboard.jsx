@@ -3,6 +3,11 @@ import "./Dash.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import FetchData from "../ProductApi/IphoneApi";
+import { Button, Wrap, WrapItem } from "@chakra-ui/react";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+
+
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -71,18 +76,27 @@ const Dashboard = () => {
             <th className="th-text">Product Image</th>
             <th className="th-text">Product Quantity</th>
             <th className="th-text">Product Price</th>
+            <th className="th-text">Button</th>
           </thead>
 
           {data.map((item) => {
             return (
               <tbody className="td1">
-                <td className="td-text">{item.title}</td>
-                <td className="td-text">{item.type}</td>
+                <td className="td-text">{item.productName}</td>
+                <td className="td-text">{item.productCategory}</td>
                 <td className="td-text">
-                  <img src={item.base} alt="" className="image-container" />
+                  <img src={item.imageUrl} alt="" className="image-container" />
                 </td>
                 <td className="td-text">{item.quantity}</td>
                 <td className="td-text">{item.amount}</td>
+                <td>              <Wrap spacing={4}>
+    <WrapItem>
+      <Button colorScheme='gray'>Edit &nbsp;<EditIcon/></Button>
+    </WrapItem>
+    <WrapItem>
+    <Button colorScheme='gray'>Delete  &nbsp;<DeleteIcon/></Button>
+      </WrapItem>
+      </Wrap></td>
               </tbody>
             );
           })}

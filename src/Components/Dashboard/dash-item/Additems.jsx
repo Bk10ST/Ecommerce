@@ -4,11 +4,10 @@ import "./item.css";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { QueryClient, useMutation } from "@tanstack/react-query";
-import './addlist.css'
+import "./addlist.css";
 import { createProduct } from "../../ProductApi/IphoneApi";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Additems = () => {
   const style = {
@@ -17,11 +16,11 @@ const Additems = () => {
   };
 
   const [items, setItems] = useState({
-    title: "",
-    type: "",
+    ProductName: "",
+    productCategory: "",
     quantity: 0,
     amount: 0,
-    base: null,
+    productImages: null,
   });
 
   const handleChangeInput = (e) => {
@@ -56,13 +55,12 @@ const Additems = () => {
 
   const handleImage = async (e) => {
     const file = e.target.files[0];
-    const base = await convertToBase64(file);
-    console.log(base);
-    setItems({
-      ...items,
-      base,
-    });
+    const productImages = await convertToBase64(file);
+    const imageUrl = productImages.slice(22 , productImages.length);
+    console.log({imageUrl});
+    setItems(prev => ({...items , productImagesUrl : [imageUrl]}));
   };
+
 
   const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -79,24 +77,28 @@ const Additems = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log({items})
     e.preventDefault();
     createPostMutation.mutate({
       id: uuidv4(),
       ...items,
-    });
-    toast("product added")
-    setItems({
-      title: "",
-      type: "",
-      quantity: 0,
-      amount: 0,
-      base: null,
+    } , {
+      onSuccess : () => {
+        toast("product added");
+        setItems({
+          productCategory: "",
+          ProductName: "",
+          quantity: 0,
+          amount: 0,
+          productImages: null,
+        });
+      }
     });
   };
 
   return (
     <div>
-       <ToastContainer />
+      <ToastContainer />
       <div className="sidenav">
         <h1 className="nav-head">TechStore</h1>
         <div className="nav-item">
@@ -120,87 +122,99 @@ const Additems = () => {
         </div>
       </div>
       <div className="custom-info">
-  <h1 className="custom-header-dash">Add items</h1>
-</div>
-
-<div className="custom-input-field">
-  <form onSubmit={handleSubmit}>
-    <div className="custom-form-row">
-      <div className="custom-col">
-        <label htmlFor="">Product Name : </label>
-        <input
-          type="text"
-          name="title"
-          value={items[name]}
-          className="custom-form-control"
-          placeholder="Product Name"
-          onChange={handleChangeInput}
-        />
+        <h1 className="custom-header-dash">Add items</h1>
       </div>
 
-      <div className="custom-form-group custom-col-md-4">
-        <label htmlFor="inputState">Type</label>
-        <select
-          id="inputState"
-          value={items[name]}
-          name="type"
-          onChange={handleChangeInput}
-          className="custom-form-control"
-        >
-          <option>-- Choose --</option>
-          <option>iphone</option>
-          <option>ipad</option>
-          <option>MacBook</option>
-        </select>
-      </div>
+      <div className="custom-input-field">
+        <form onSubmit={handleSubmit}>
+          <div className="custom-form-row">
+            <div className="custom-col">
+              <label htmlFor="">Product Name : </label>
+              <input
+                type="text"
+                name="productName"
+                value={items[name]}
+                className="custom-form-control"
+                placeholder="Product Name"
+                onChange={handleChangeInput}
+              />
+            </div>
 
-      <div className="custom-form-group">
-        <label htmlFor="exampleFormControlFile1">Product Image</label>
-        <input
-          type="file"
-          className="custom-form-control-file"
-          name="images"
-          accept="images/*"
-          id="exampleFormControlFile1"
-          onChange={handleImage}
-        />
-      </div>
-    </div>
+            <div className="custom-form-group custom-col-md-4">
+              <label htmlFor="inputState">Type</label>
+              <select
+                id="inputState"
+                value={items[name]}
+                name="productCategory"
+                onChange={handleChangeInput}
+                className="custom-form-control"
+              >
+                <option>-- Choose --</option>
+                <option>iphone</option>
+                <option>ipad</option>
+                <option>MacBook</option>
+              </select>
+            </div>
 
-    <div className="custom-number-field">
-      <div className="custom-col">
-        <label htmlFor="">Product Quantity : </label>
-        <input
-          type="number"
-          name="quantity"
-          value={items[name]}
-          onChange={handleQuantity}
-          className="custom-form-control"
-          placeholder="Product Quantity"
-        />
-      </div>
-    </div>
+            {/* <div className="custom-form-group">
+              <label htmlFor="exampleFormControlFile1">Product Image</label>
+              <input
+                type="file"
+                className="custom-form-control-file"
+                name="productImages"
+                accept="images/*"
+                id="exampleFormControlFile1"
+                onChange={handleImage}
+              />
+            </div> */}
 
-    <div className="custom-number-field">
-      <div className="custom-col">
-        <label htmlFor="">Product Amount : </label>
-        <input
-          type="number"
-          name="amount"
-          value={items[name]}
-          onChange={handleChangeInput}
-          className="custom-form-control"
-          placeholder="Product Amount"
-        />
-      </div>
-    </div>
-   
-    <button type="submit" className="custom-btn custom-btn-primary">
-      Add
-    </button>
-  </form>
-</div>
+            <div className="custom-form-group">
+              <label htmlFor="exampleFormControlFile1">Product Image</label>
+              <input
+                type="file"
+                className="custom-form-control-file"
+                name="productImages"
+                accept="image/*"
+                id="exampleFormControlFile1"
+                onChange={handleImage}
+                multiple // allow multiple file selection
+              />
+            </div>
+          </div>
 
+          <div className="custom-number-field">
+            <div className="custom-col">
+              <label htmlFor="">Product Quantity : </label>
+              <input
+                type="number"
+                name="quantity"
+                value={items[name]}
+                onChange={handleQuantity}
+                className="custom-form-control"
+                placeholder="Product Quantity"
+              />
+            </div>
+          </div>
+
+          <div className="custom-number-field">
+            <div className="custom-col">
+              <label htmlFor="">Product Amount : </label>
+              <input
+                type="number"
+                name="amount"
+                value={items[name]}
+                onChange={handleChangeInput}
+                className="custom-form-control"
+                placeholder="Product Amount"
+              />
+            </div>
+          </div>
+
+          <button type="submit" className="custom-btn custom-btn-primary">
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
